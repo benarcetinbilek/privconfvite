@@ -1,0 +1,56 @@
+.leftBarContainer {
+  flex: 0.4;
+  background-color: white;
+  border-radius: 0 20px 20px 0;
+  height: 95%;
+  align-self: center;
+  display: flex;
+  width: 100%;
+}
+
+.leftBarButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  border-right: rgb(153, 153, 153) 2px solid;
+}
+
+.leftBarContentContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.leftBarContentContainer > div {
+  width: 100%;
+  height: 100%;
+}
+
+.leftBarArrows {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 40px;
+  border-bottom: 2px black solid;
+  height: 50px;
+}
+
+.leftBarArrows > :nth-child(1) {
+  border-right: 2px black solid;
+}
+
+.leftBarArrow {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: all 0.2s ease-in-out;
+}
+.leftBarArrow:hover {
+  transform: scale(1.05);
+}

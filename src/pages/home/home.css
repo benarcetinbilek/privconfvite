@@ -1,0 +1,30 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* üst kısım: LeftBar + Canvas */
+.topContainer {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* .topContainer > .leftBar {
+  width: 20%;
+  min-width: 200px;
+  background-color: #f4f4f4; 
+  height: 100%;
+}
+
+
+.topContainer > .canvas {
+  flex: 1;
+  height: 100%;
+} */
+
+/* Footer en altta */
