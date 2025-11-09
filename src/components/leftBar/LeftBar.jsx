@@ -3,6 +3,7 @@ import {
   AddTextTwo,
   ColorCard,
   DesignIdeas16Regular,
+  EmojiStickerLine,
   LatticePattern,
   Logout2Broken,
   LongArrowUpLeft,
@@ -17,6 +18,7 @@ import PatternPage from "../../pages/subPages/pattern/PatternPage";
 import GradientPage from "../../pages/subPages/gradient/GradientPage";
 import TextPage from "../../pages/subPages/text/TextPage";
 import LogoPage from "../../pages/subPages/logo/LogoPage";
+import StickerPage from "../../pages/subPages/sticker/StickerPage";
 
 function LeftBar() {
   const [page, setPage] = useState("design");
@@ -34,19 +36,24 @@ function LeftBar() {
       logo: <OutlineColorLens />,
     },
     {
-      onClick: () => setPage("pattern"),
-      label: "Pattern",
-      logo: <LatticePattern />,
-    },
-    {
       onClick: () => setPage("gradient"),
       label: "Gradient",
       logo: <ColorCard />,
     },
     {
+      onClick: () => setPage("pattern"),
+      label: "Pattern",
+      logo: <LatticePattern />,
+    },
+    {
       onClick: () => setPage("text"),
       label: "Text",
       logo: <AddTextTwo />,
+    },
+    {
+      onClick: () => setPage("sticker"),
+      label: "Sticker",
+      logo: <EmojiStickerLine />,
     },
     {
       onClick: () => setPage("logo"),
@@ -70,6 +77,9 @@ function LeftBar() {
       break;
     case "text":
       content = <TextPage />;
+      break;
+    case "sticker":
+      content = <StickerPage />;
       break;
     case "logo":
       content = <LogoPage />;
