@@ -2,6 +2,7 @@ import "./logoPage.css";
 import Header from "../../../components/ui/Header";
 
 function LogoPage() {
+  console.log("LogoPage");
   return (
     <div className="logoPageContainer">
       {" "}

@@ -7,18 +7,32 @@ import {
   OutlineShare,
   PlayCircleOutline,
 } from "../../assets/svgs";
+import uiStore from "../../store/uiStore";
 
 function Footer() {
+  const { setFooterButtonsActive } = uiStore();
   const handleClick = (button) => {
     // Handle button click based on button label or other properties
     console.log(`${button.label} button clicked`);
   };
   const footerButtons = [
-    { onClick: handleClick, label: "Infos", logo: <InfoCircleOutline /> },
-    { onClick: handleClick, label: "Share Design", logo: <OutlineShare /> },
+    {
+      onClick: () => setFooterButtonsActive("Infos"),
+      label: "Infos",
+      logo: <InfoCircleOutline />,
+    },
+    {
+      onClick: () => setFooterButtonsActive("Share Design"),
+      label: "Share Design",
+      logo: <OutlineShare />,
+    },
     { onClick: handleClick, label: "Duplicate", logo: <DocumentDuplicate /> },
     { onClick: handleClick, label: "Save", logo: <OutlineSaveAll /> },
-    { onClick: handleClick, label: "Tutorial", logo: <PlayCircleOutline /> },
+    {
+      onClick: () => setFooterButtonsActive("Tutorial"),
+      label: "Tutorial",
+      logo: <PlayCircleOutline />,
+    },
   ];
   return (
     <div className="footerContainer">

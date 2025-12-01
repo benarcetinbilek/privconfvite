@@ -4,18 +4,32 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-bottom: 2px rgb(153, 153, 153) solid;
+  border-bottom: 1px solid var(--border-color);
   width: 100%;
   padding: 10px 10px;
   font-weight: bold;
   transition: all 0.2s ease;
 }
 
+.reusableButtonPagination.active {
+  background-color: var(--button-bg-color-active);
+  color: var(--text-color-active);
+}
+.reusableButtonPagination.active > .buttonLogo {
+  /* background-color: var(--button-bg-color-active); */
+  color: var(--text-color-active);
+}
+
 .reusableButtonPagination:hover {
-  transform: scale(1.05);
+  background-color: var(--button-bg-color-hover);
 }
 
 .reusableButtonReverseForward {
+}
+
+.buttonLogo {
+  font-size: 24px;
+  color: var(--svg-color);
 }
 
 .reusableButtonFooter {
@@ -25,20 +39,26 @@
   justify-content: center;
   gap: 2px;
   cursor: pointer;
-  border: 3px black solid;
+  border: 1px black solid;
   font-weight: bold;
-  padding: 5px 10px;
+  padding: 2px 10px;
   transition: all 0.2s ease;
 }
 
+.buttonLogoFooter {
+  font-size: 24px;
+  padding-top: 5px;
+}
+
 .reusableButtonFooter:hover {
-  transform: scale(1.05);
+  background-color: var(--button-bg-color-second);
+  color: aliceblue;
 }
 
 .buttonFooterCheckout {
   background-color: rgb(0, 174, 255);
   color: white;
-  height: 50px;
+  height: 70px;
   width: 100px;
   font-size: 20px;
   display: flex;

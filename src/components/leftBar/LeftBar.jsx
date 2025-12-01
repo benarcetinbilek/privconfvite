@@ -23,7 +23,7 @@ import StickerPage from "../../pages/subPages/sticker/StickerPage";
 function LeftBar() {
   const [page, setPage] = useState("design");
   let content;
-
+  console.log("LeftBar");
   const leftBarButtons = [
     {
       onClick: () => setPage("design"),
@@ -98,6 +98,7 @@ function LeftBar() {
             onClick={button.onClick}
             label={button.label}
             logo={button.logo}
+            isActive={page === button.label.toLowerCase()}
           />
         ))}{" "}
         <div className="leftBarArrows">

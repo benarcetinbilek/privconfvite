@@ -2,9 +2,12 @@ import "./buttons.css";
 
 // Buttons for UI
 // Pagination button
-const ReusableButtonPagination = ({ onClick, label, logo }) => {
+const ReusableButtonPagination = ({ onClick, label, logo, isActive }) => {
   return (
-    <div className="reusableButtonPagination" onClick={onClick}>
+    <div
+      className={`reusableButtonPagination ${isActive ? "active" : ""}`}
+      onClick={onClick}
+    >
       {/* logo artık <svg> olarak geliyor */}
       {logo && <div className="buttonLogo">{logo}</div>}
       {label && <span className="buttonLabel">{label}</span>}
@@ -25,7 +28,7 @@ const ReusableButtonReverseForward = ({ onClick, logo }) => {
 const ReusableButtonFooter = ({ onClick, label, logo }) => {
   return (
     <div className="reusableButtonFooter" onClick={onClick}>
-      {logo && <div className="buttonLogo">{logo}</div>}
+      {logo && <div className="buttonLogoFooter">{logo}</div>}
       {label && <span className="buttonLabel">{label}</span>}
     </div>
   );

@@ -1,0 +1,42 @@
+.designPageContainer {
+  overflow: hidden;
+}
+
+.designContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 10px 2px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.designItem {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.designItem:hover {
+  border-color: #aaa;
+}
+
+.designImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ya da cover */
+}
+
+@media (max-width: 600px) {
+  .designContent {
+    grid-template-columns: 1fr;
+  }
+}

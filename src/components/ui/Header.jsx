@@ -9,7 +9,7 @@ const Header = ({
   onButtonClick,
 }) => {
   return (
-    <div className="headerContainer">
+    <div className={`headerContainer ${isButtons && "buttons"}`}>
       <div className="headerTitles">
         <h1 className="headerTitle">{title}</h1>
         <h2 className="headerSubTitle">{subtitle}</h2>
