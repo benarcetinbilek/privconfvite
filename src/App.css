@@ -2,12 +2,13 @@
 
 :root {
   --main-font: "Kedebideri", sans-serif;
-  --border-color: #ddd;
+  --border-color: #e3e3e3;
   --svg-color: #505050;
   --text-color: #505050;
   --text-color-active: #00aeff;
   --button-bg-color-hover: #f4f8ff;
   --button-bg-color-second: #111111;
+  --button-bg-color-third: #00aeff;
   --button-bg-color-active: #9ee0ff;
 }
 

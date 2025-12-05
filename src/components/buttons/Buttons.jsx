@@ -1,3 +1,4 @@
+import { BaselineKeyboardArrowRight } from "../../assets/svgs";
 import "./buttons.css";
 
 // Buttons for UI
@@ -43,9 +44,95 @@ const ButtonFooterCheckout = ({ onClick, label }) => {
   );
 };
 
+const ButtonForColors = ({
+  onClick,
+  color,
+  secondColor,
+  isGradient = false,
+  title,
+}) => {
+  console.log("ButtonForColors:", { color, secondColor, isGradient, title });
+  return (
+    <div className="colorButton" onClick={onClick}>
+      <div
+        className="colorCircle"
+        style={{
+          background: isGradient
+            ? `linear-gradient(90deg, ${color}, ${secondColor})`
+            : color,
+        }}
+      />
+
+      {/* Title */}
+      <span className="colorTitle">{title}</span>
+
+      {/* Ok */}
+      <BaselineKeyboardArrowRight className="arrowIcon" />
+    </div>
+  );
+};
+//TODO -- isGradient is false by default check if it works fine or there will be glitch
+const ButtonForPatterns = ({
+  onClick,
+  color,
+  secondColor,
+  isGradient = false,
+  title,
+  isActive = true,
+  onToggle,
+}) => {
+  return (
+    <div className="colorButton" onClick={onClick}>
+      {/* Pattern circle */}
+      <div className="colorCirclePattern"></div>
+
+      {/* Title */}
+      <span className="colorTitle">{title}</span>
+
+      {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
+      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
+        <div className="toggleThumb" />
+      </div>
+
+      {/* Arrow */}
+      <BaselineKeyboardArrowRight className="arrowIcon" />
+    </div>
+  );
+};
+
+const ButtonForText = ({
+  onClick,
+  color,
+  secondColor,
+  isGradient = false,
+  title,
+  isActive = true,
+  onToggle,
+}) => {
+  return (
+    <div className="colorButton" onClick={onClick}>
+      {/* TODO -- change the title font as it is on model and color as well */}
+
+      {/* Title */}
+      <span className="colorTitle">{title}</span>
+
+      {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
+      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
+        <div className="toggleThumb" />
+      </div>
+
+      {/* Arrow */}
+      <BaselineKeyboardArrowRight className="arrowIcon" />
+    </div>
+  );
+};
+
 export {
   ReusableButtonPagination,
   ReusableButtonReverseForward,
   ReusableButtonFooter,
   ButtonFooterCheckout,
+  ButtonForColors,
+  ButtonForPatterns,
+  ButtonForText,
 };

@@ -1,0 +1,47 @@
+.assetDrawerContainer {
+  width: 100%;
+  max-height: 300px; /* scroll yüksekliği */
+  overflow-y: auto; /* dikey scroll */
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.patternsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* itemler arası boşluk */
+}
+
+.patternItem {
+  border: 1px solid var(--border-color);
+  padding: 1px;
+  flex: 1 1 calc(50% - 10px); /* default: küçük ekran, 2 yan yana */
+  aspect-ratio: 1 / 1; /* kare olması için */
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.patternItem:hover {
+  border-color: var(--button-bg-color-active);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.patternItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* container tamamen dolacak */
+  display: block;
+}
+
+/* Büyük ekranlarda 4 item yan yana */
+@media (min-width: 1024px) {
+  .patternItem {
+    flex: 1 1 calc(25% - 10px); /* max 4 item yan yana */
+  }
+}

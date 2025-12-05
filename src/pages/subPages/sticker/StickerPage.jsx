@@ -1,5 +1,6 @@
 import "./stickerPage.css";
 import Header from "../../../components/ui/Header";
+import AssetDrawer from "../../../components/assetDrawer/AssetDrawer";
 
 function StickerPage() {
   console.log("StickerPage");
@@ -7,6 +8,7 @@ function StickerPage() {
     <div className="stickerPageContainer">
       {" "}
       <Header title={"Sticker"} subtitle={"Sticker"} />
+      <AssetDrawer />
     </div>
   );
 }
