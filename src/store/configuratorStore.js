@@ -33,7 +33,7 @@ const configuratorStore = create((set, get) => ({
     },
   },
 
-  setColorForPart: (part, val) =>
+  updateColor: (part, val) =>
     set((state) => ({
       colorsForParts: {
         ...state.colorsForParts,
@@ -62,17 +62,49 @@ const configuratorStore = create((set, get) => ({
   itemsOnModel: [
     {
       id: "1",
-      type: "sticker",
-      texture: "/logo1.png",
+      type: "design",
+      textureUri: "/1.svg",
+      texturePngUri: "/1.png",
       x: 0,
       y: 0,
       scale: 1,
       rotation: 0,
       layerIndex: 0,
       isActive: true,
+      appliedPart: ["LeftSleeve", "RightSleeve"],
     },
     {
       id: "2",
+      type: "pattern",
+      textureUri: "/pattern-1.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: "Front",
+      firstColor: "#ff0000",
+      secondColor: "#0000ff",
+      isGradient: true,
+    },
+    {
+      id: "3",
+      type: "pattern",
+      textureUri: "/pattern-2.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: "Back",
+      firstColor: "#ff0000",
+      secondColor: "#0000ff",
+      isGradient: true,
+    },
+    {
+      id: "4",
       type: "text",
       textContent: "benar",
       x: 0,
@@ -84,31 +116,33 @@ const configuratorStore = create((set, get) => ({
     },
     {
       id: "5",
-      type: "text",
-      textContent: "ahmet",
+      type: "sticker",
+      textureUri: "/sticker-1.svg",
       x: 0,
       y: 0,
       scale: 1,
       rotation: 0,
       layerIndex: 0,
       isActive: true,
+      stickerName: "Sticker 1",
     },
     {
-      id: "3",
-      type: "pattern",
-      texture: "/logo1.png",
+      id: "6",
+      type: "sticker",
+      textureUri: "/sticker-2.svg",
       x: 0,
       y: 0,
       scale: 1,
       rotation: 0,
       layerIndex: 0,
       isActive: true,
-      appliedPart: "Front",
+      stickerName: "Sticker 2",
     },
+
     {
-      id: "4",
-      type: "design",
-      texture: "/logo1.png",
+      id: "7",
+      type: "logo",
+      textureUri: "/logo-1.png",
       x: 0,
       y: 0,
       scale: 1,
@@ -116,6 +150,153 @@ const configuratorStore = create((set, get) => ({
       layerIndex: 0,
       isActive: true,
       appliedPart: ["LeftSleeve", "RightSleeve"],
+      logoName: "Logo 1",
+    },
+
+    {
+      id: "8",
+      type: "logo",
+      textureUri: "/logo-2.jpg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: ["LeftSleeve", "RightSleeve"],
+      logoName: "Logo 2",
+    },
+    {
+      id: "9",
+      type: "logo",
+      textureUri: "/logo-3.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: ["LeftSleeve", "RightSleeve"],
+      logoName: "Logo 3",
+    },
+    {
+      id: "10",
+      type: "design",
+      textureUri: "/1.svg",
+      texturePngUri: "/1.png",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: ["LeftSleeve", "RightSleeve"],
+    },
+    {
+      id: "11",
+      type: "pattern",
+      textureUri: "/pattern-1.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: "Front",
+      firstColor: "#ff0000",
+      secondColor: "#0000ff",
+      isGradient: true,
+    },
+    {
+      id: "12",
+      type: "pattern",
+      textureUri: "/pattern-2.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: "Back",
+      firstColor: "#ff0000",
+      secondColor: "#0000ff",
+      isGradient: true,
+    },
+    {
+      id: "13",
+      type: "text",
+      textContent: "benar",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+    },
+    {
+      id: "14",
+      type: "sticker",
+      textureUri: "/sticker-1.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      stickerName: "Sticker 1",
+    },
+    {
+      id: "15",
+      type: "sticker",
+      textureUri: "/sticker-2.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      stickerName: "Sticker 2",
+    },
+
+    {
+      id: "16",
+      type: "logo",
+      textureUri: "/logo-1.png",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: ["LeftSleeve", "RightSleeve"],
+      logoName: "Logo 1",
+    },
+
+    {
+      id: "17",
+      type: "logo",
+      textureUri: "/logo-2.jpg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: ["LeftSleeve", "RightSleeve"],
+      logoName: "Logo 2",
+    },
+    {
+      id: "18",
+      type: "logo",
+      textureUri: "/logo-3.svg",
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      layerIndex: 0,
+      isActive: true,
+      appliedPart: ["LeftSleeve", "RightSleeve"],
+      logoName: "Logo 3",
     },
   ],
 
@@ -149,6 +330,14 @@ const configuratorStore = create((set, get) => ({
   getItemsByType: (type) =>
     get().itemsOnModel.filter((item) => item.type === type),
 
+  getAllItems: () => get().itemsOnModel,
+
+  getMaxId: () => {
+    const items = get().itemsOnModel;
+    if (items.length === 0) return 0;
+    return Math.max(...items.map((i) => parseInt(i.id)));
+  },
+
   //how to use
   // Tek property update
   // updateItem("1", { scale: 1.5 });
@@ -177,6 +366,12 @@ const configuratorStore = create((set, get) => ({
 
   // // Get items by type
   //  const textItems = configuratorStore.getState().getItemsByType("text");
+
+  // // Get all items
+  // const allItems = configuratorStore.getState().getAllItems();
+
+  // // Get max id
+  // const maxId = configuratorStore.getState().getMaxId();
 }));
 
 export default configuratorStore;

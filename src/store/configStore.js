@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 //TODO-- set when app initializes
-const configStore = create((set) => ({
+const configStore = create((set, get) => ({
   //use this as main design config which parts can have which design types
   designConfig: {},
   setDesignConfig: (val) => set({ designConfig: val }),
@@ -73,8 +73,26 @@ const configStore = create((set) => ({
   textConfig: {},
   setTextConfig: (val) => set({ textConfig: val }),
 
-  stickerConfig: {},
+  stickerConfig: [
+    { id: "sticker-1", texture: "/sticker-1.svg" },
+    { id: "sticker-2", texture: "/sticker-2.svg" },
+    { id: "sticker-3", texture: "/sticker-3.svg" },
+    { id: "sticker-4", texture: "/sticker-4.svg" },
+    { id: "sticker-1", texture: "/sticker-1.svg" },
+    { id: "sticker-2", texture: "/sticker-2.svg" },
+    { id: "sticker-3", texture: "/sticker-3.svg" },
+    { id: "sticker-4", texture: "/sticker-4.svg" },
+    { id: "sticker-1", texture: "/sticker-1.svg" },
+    { id: "sticker-2", texture: "/sticker-2.svg" },
+    { id: "sticker-3", texture: "/sticker-3.svg" },
+    { id: "sticker-4", texture: "/sticker-4.svg" },
+    { id: "sticker-1", texture: "/sticker-1.svg" },
+    { id: "sticker-2", texture: "/sticker-2.svg" },
+    { id: "sticker-3", texture: "/sticker-3.svg" },
+    { id: "sticker-4", texture: "/sticker-4.svg" },
+  ],
   setStickerConfig: (val) => set({ stickerConfig: val }),
+  getAllStickers: () => get().stickerConfig,
 
   uvConfig: {
     LeftSleeve: [

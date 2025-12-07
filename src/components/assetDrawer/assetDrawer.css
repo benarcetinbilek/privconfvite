@@ -1,11 +1,13 @@
 .assetDrawerContainer {
   width: 100%;
+  min-height: 30%;
   max-height: 300px; /* scroll yüksekliği */
   overflow-y: auto; /* dikey scroll */
   padding: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  margin-top: 5px;
 }
 
 .patternsGrid {

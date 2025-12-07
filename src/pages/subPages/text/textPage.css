@@ -1,6 +1,23 @@
 .textPageContainer {
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+/* Scrollable alan */
+.textScrollArea {
+  overflow-y: auto;
+  max-height: 100%; /* istersen değiştir */
+  padding-right: 5px;
+}
+
+.textScrollArea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.textScrollArea::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
 }
 
 .textPageContainer input {
@@ -29,5 +46,4 @@
 .textHr {
   border: 1px solid var(--border-color);
   margin-top: 10px;
-  margin-bottom: 10px;
 }

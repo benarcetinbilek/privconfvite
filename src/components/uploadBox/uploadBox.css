@@ -1,0 +1,45 @@
+.uploadBoxContainer {
+  width: 100%;
+  margin-top: 10px;
+  height: 25%;
+}
+
+.uploadBox {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #7a7a7a;
+  border-radius: 12px;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.uploadBox:hover {
+  background: #f0f0f0;
+  border-color: #333;
+}
+
+.uploadText {
+  color: #555;
+  font-size: 16px;
+}
+
+.browseText {
+  color: var(--button-bg-color-third);
+  font-weight: 600;
+}
+
+.fileName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.uploadError {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+}

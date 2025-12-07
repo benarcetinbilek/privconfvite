@@ -1,0 +1,24 @@
+.layerOrderContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.layerScrollArea {
+  overflow-y: auto;
+  flex-grow: 1;
+  max-height: 7100%; /* gerekirse ayarlanabilir */
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+.layerScrollArea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.layerScrollArea::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}

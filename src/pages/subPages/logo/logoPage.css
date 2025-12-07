@@ -1,0 +1,25 @@
+.logoPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.logoHr {
+  margin-top: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.logoScrollArea {
+  overflow-y: auto;
+  max-height: 100%; /* istersen değiştir */
+  padding-right: 5px;
+}
+
+.logoScrollArea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.logoScrollArea::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}

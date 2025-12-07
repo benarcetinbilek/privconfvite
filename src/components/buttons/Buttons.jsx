@@ -80,22 +80,22 @@ const ButtonForPatterns = ({
   title,
   isActive = true,
   onToggle,
+  patternUri,
+  isLayerOrder = false,
 }) => {
   return (
     <div className="colorButton" onClick={onClick}>
       {/* Pattern circle */}
-      <div className="colorCirclePattern"></div>
-
+      <img className="stickerPreviewButton" src={patternUri} />
       {/* Title */}
       <span className="colorTitle">{title}</span>
-
       {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
       <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
         <div className="toggleThumb" />
       </div>
-
       {/* Arrow */}
-      <BaselineKeyboardArrowRight className="arrowIcon" />
+
+      {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
     </div>
   );
 };
@@ -108,6 +108,7 @@ const ButtonForText = ({
   title,
   isActive = true,
   onToggle,
+  isLayerOrder = false,
 }) => {
   return (
     <div className="colorButton" onClick={onClick}>
@@ -122,7 +123,110 @@ const ButtonForText = ({
       </div>
 
       {/* Arrow */}
-      <BaselineKeyboardArrowRight className="arrowIcon" />
+      {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
+    </div>
+  );
+};
+
+const ButtonForSticker = ({
+  onClick,
+  title,
+  isActive = true,
+  onToggle,
+  stickerUri,
+  isLayerOrder = false,
+}) => {
+  return (
+    <div className="colorButton" onClick={onClick}>
+      {/* TODO -- change the title font as it is on model and color as well */}
+
+      <img className="stickerPreviewButton" src={stickerUri} />
+
+      {/* Title */}
+      <span className="colorTitle">{title}</span>
+
+      {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
+      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
+        <div className="toggleThumb" />
+      </div>
+
+      {/* Arrow */}
+      {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
+    </div>
+  );
+};
+
+const ButtonForLogo = ({
+  onClick,
+  title,
+  isActive = true,
+  onToggle,
+  logoUri,
+  isLayerOrder = false,
+}) => {
+  console.log("ButtonForLogo:", { title, logoUri });
+  return (
+    <div className="colorButton" onClick={onClick}>
+      {/* TODO -- change the title font as it is on model and color as well */}
+      <img className="stickerPreviewButton" src={logoUri} />
+      {/* Title */}
+      <span className="colorTitle">{title}</span>
+
+      {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
+      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
+        <div className="toggleThumb" />
+      </div>
+
+      {/* Arrow */}
+      {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
+    </div>
+  );
+};
+
+const UniversalButton = ({
+  title,
+  onClick,
+  isActive = true,
+  onToggle,
+  type = "default", // "color" | "pattern" | "text" | "logo" | "sticker"
+  color,
+  secondColor,
+  isGradient = false,
+}) => {
+  return (
+    <div className="colorButton" onClick={onClick}>
+      {/* LEFT SIDE CONTENT (circle or pattern) */}
+      {type === "color" && (
+        <div
+          className="colorCircle"
+          style={{
+            background: isGradient
+              ? `linear-gradient(90deg, ${color}, ${secondColor})`
+              : color,
+          }}
+        />
+      )}
+
+      {type === "pattern" && <div className="colorCirclePattern"></div>}
+
+      {/* TITLE */}
+      <span className="colorTitle">{title}</span>
+
+      {/* INLINE TOGGLE (all types except color use this) */}
+      {type !== "color" && (
+        <div
+          className={`toggleSwitch ${isActive ? "on" : ""}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggle?.(isActive);
+          }}
+        >
+          <div className="toggleThumb" />
+        </div>
+      )}
+
+      {/* Arrow icon */}
+      {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
     </div>
   );
 };
@@ -135,4 +239,7 @@ export {
   ButtonForColors,
   ButtonForPatterns,
   ButtonForText,
+  ButtonForSticker,
+  ButtonForLogo,
+  UniversalButton,
 };

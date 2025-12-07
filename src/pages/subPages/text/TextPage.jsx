@@ -7,23 +7,33 @@ function TextPage() {
   console.log("TextPage");
   const textItems = configuratorStore.getState().getItemsByType("text");
   console.log("Text items on model:", textItems);
+
+  const handleToggle = (id, isActive) => {
+    configuratorStore.getState().toggleItem(id, !isActive);
+  };
+
   return (
     <div className="textPageContainer">
-      {" "}
-      <Header title={"Text"} subtitle={"Text"} />
+      <Header title="Text" subtitle="Text" />
+
       <input type="text" placeholder="Enter your text here" />
       <button>Add Text</button>
+
       <hr className="textHr" />
-      {textItems.length > 0 &&
-        textItems.map((item) => (
-          <ButtonForText
-            key={item.id}
-            title={item.textContent}
-            isActive={item.isActive}
-            onToggle={() => handleToggle(item.id, item.isActive)}
-            onClick={() => console.log("Clicked", item.textContent)}
-          />
-        ))}
+
+      {/* Scrollable section */}
+      <div className="textScrollArea">
+        {textItems.length > 0 &&
+          textItems.map((item) => (
+            <ButtonForText
+              key={item.id}
+              title={item.textContent}
+              isActive={item.isActive}
+              onToggle={() => handleToggle(item.id, item.isActive)}
+              onClick={() => console.log("Clicked", item.textContent)}
+            />
+          ))}
+      </div>
     </div>
   );
 }

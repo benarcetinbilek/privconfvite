@@ -1,0 +1,26 @@
+.stickerPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.stickerHr {
+  margin-top: 10px;
+  border: 1px solid var(--border-color);
+}
+
+/* Scrollable alan */
+.stickerScrollArea {
+  overflow-y: auto;
+  max-height: 100%; /* istersen değiştir */
+  padding-right: 5px;
+}
+
+.stickerScrollArea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.stickerScrollArea::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}

@@ -5,6 +5,7 @@ import {
   DesignIdeas16Regular,
   EmojiStickerLine,
   LatticePattern,
+  LayersOutline,
   Logout2Broken,
   LongArrowUpLeft,
   LongArrowUpRight,
@@ -19,11 +20,13 @@ import GradientPage from "../../pages/subPages/gradient/GradientPage";
 import TextPage from "../../pages/subPages/text/TextPage";
 import LogoPage from "../../pages/subPages/logo/LogoPage";
 import StickerPage from "../../pages/subPages/sticker/StickerPage";
+import LayerOrder from "../../pages/subPages/layerOrder/LayerOrder";
 
 function LeftBar() {
   const [page, setPage] = useState("design");
   let content;
   console.log("LeftBar");
+
   const leftBarButtons = [
     {
       onClick: () => setPage("design"),
@@ -60,6 +63,11 @@ function LeftBar() {
       label: "Logo",
       logo: <Logout2Broken />,
     },
+    {
+      onClick: () => setPage("layerorder"),
+      label: "layer",
+      logo: <LayersOutline />,
+    },
   ];
 
   switch (page) {
@@ -83,6 +91,9 @@ function LeftBar() {
       break;
     case "logo":
       content = <LogoPage />;
+      break;
+    case "layerorder":
+      content = <LayerOrder />;
       break;
     default:
       content = <DesignPage />;
