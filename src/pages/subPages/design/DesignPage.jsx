@@ -1,109 +1,137 @@
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import Header from "../../../components/ui/Header";
 import "./designPage.css";
+import configStore from "../../../store/configStore";
+import uiStore from "../../../store/uiStore";
+import configuratorStore from "../../../store/configuratorStore";
+import { toast } from "react-toastify";
+import LeftBarPopup from "../../../components/leftBarPopUp/LeftBarPopUp";
+import { add } from "three/tsl";
 
 function DesignPage() {
+  const { designConfig, bestDesignConfig, desingLocationsUrls } = configStore();
+  const { setIsLoading } = uiStore();
+  const getMaxId = configuratorStore((state) => state.getMaxId);
+  const addItem = configuratorStore((state) => state.addItem);
+  const updateItem = configuratorStore((state) => state.updateItem);
+  const removeItem = configuratorStore((state) => state.removeItem);
+  const designItems = configuratorStore.getState().getItemsByType("design");
+
+  console.log("designItems:", designItems);
   const [selectedButton, setSelectedButton] = useState("first");
+  const [isDesignPopup, setIsDesignPopup] = useState(false);
+  const [selectedDesign, setSelectedDesign] = useState(null);
+
   console.log("DesignPage");
-  const handleButtonClick = (key) => {
+
+  const handleHeaderButtonClick = (key) => {
     setSelectedButton(key);
     console.log(key);
   };
 
-  const designs = [
-    { pngUri: "/1.png", svgUri: "/1.svg" },
-    { pngUri: "/2.png", svgUri: "/2.svg" },
-    { pngUri: "/3.png", svgUri: "/3.svg" },
-    { pngUri: "/4.png", svgUri: "/4.svg" },
-    { pngUri: "/1.png", svgUri: "/1.svg" },
-    { pngUri: "/2.png", svgUri: "/2.svg" },
-    { pngUri: "/3.png", svgUri: "/3.svg" },
-    { pngUri: "/4.png", svgUri: "/4.svg" },
-    { pngUri: "/1.png", svgUri: "/1.svg" },
-    { pngUri: "/2.png", svgUri: "/2.svg" },
-    { pngUri: "/3.png", svgUri: "/3.svg" },
-    { pngUri: "/4.png", svgUri: "/4.svg" },
-    { pngUri: "/1.png", svgUri: "/1.svg" },
-    { pngUri: "/2.png", svgUri: "/2.svg" },
-    { pngUri: "/3.png", svgUri: "/3.svg" },
-    { pngUri: "/4.png", svgUri: "/4.svg" },
-  ];
-  const bestDesigns = [
-    { pngUri: "/1.png", svgUri: "/1.svg" },
-    { pngUri: "/2.png", svgUri: "/2.svg" },
-    { pngUri: "/3.png", svgUri: "/3.svg" },
-    { pngUri: "/4.png", svgUri: "/4.svg" },
-    { pngUri: "/5.png", svgUri: "/5.svg" },
-    { pngUri: "/1.png", svgUri: "/1.svg" },
-    { pngUri: "/2.png", svgUri: "/2.svg" },
-    { pngUri: "/3.png", svgUri: "/3.svg" },
-    { pngUri: "/4.png", svgUri: "/4.svg" },
-    { pngUri: "/5.png", svgUri: "/5.svg" },
-    { pngUri: "/1.png", svgUri: "/1.svg" },
-    { pngUri: "/2.png", svgUri: "/2.svg" },
-    { pngUri: "/3.png", svgUri: "/3.svg" },
-    { pngUri: "/4.png", svgUri: "/4.svg" },
-    { pngUri: "/5.png", svgUri: "/5.svg" },
-  ];
-
-  const handleApplyDesign = () => {
-    //logic to apply design
-    const appliedDesign = [
-      {
-        appliedParts: { back: true, front: false },
-        colors: { primary: "#ff0000", secondary: "#00ff00" },
-        isColorGradient: true,
-        svgUri: "/design.svg",
-        designName: "Cool Design",
-        designid: "design123",
-      },
-    ];
+  const handleClickDesign = (design) => {
+    console.log("Clicked design with textureUri:", design);
+    setSelectedDesign(design);
+    setIsDesignPopup(true);
+    // setIsLoading(true, "Applying design...");
   };
 
+  const handleApplyDesign = (selectedLocation) => {
+    //logic to apply design
+
+    console.log("Gelen seçili location:", selectedLocation);
+
+    if (selectedLocation.length > 0) {
+      startTransition(() => {
+        if (designItems.length === 0) {
+          //add new design items
+          addItem({
+            id: (getMaxId() + 1).toString(),
+            type: "design",
+            textureUri: selectedDesign.svgUri,
+            texturePngUri: selectedDesign.pngUri,
+            layerIndex: 0,
+            isActive: true,
+            appliedPart: selectedLocation,
+          });
+        } else {
+          //update existing design items
+          updateItem(designItems[0].id, {
+            textureUri: selectedDesign.svgUri,
+            texturePngUri: selectedDesign.pngUri,
+            isActive: true,
+            appliedPart: selectedLocation,
+          });
+        }
+      });
+    }
+    setIsDesignPopup(false);
+  };
+
+  const handleClickBestDesign = () => {};
+
+  const handleDeleteDesign = (id) => {
+    if (designItems.length > 0) {
+      startTransition(() => {
+        removeItem(id);
+      });
+    }
+  };
+  //TODO -- check if there are best designs if not remove buttons
   return (
     <div className="designPageContainer">
       <Header
         title={"Design"}
         subtitle={"Choose a design"}
-        isButtons={true}
+        isButtons={bestDesignConfig.length > 0 && true}
         buttons={{ first: "Designs", second: "Best Designs" }}
         selectedButton={selectedButton}
-        onButtonClick={handleButtonClick}
+        onButtonClick={isDesignPopup ? undefined : handleHeaderButtonClick}
       />
       <div className="designContent">
-        {selectedButton === "first"
-          ? designs.map((design, index) => (
-              <div key={index}>
-                {" "}
+        {isDesignPopup && (
+          <LeftBarPopup
+            designLocations={desingLocationsUrls}
+            onApply={handleApplyDesign}
+          />
+        )}
+
+        {!isDesignPopup &&
+          (selectedButton === "first" ? designConfig : bestDesignConfig).map(
+            (design, index) => {
+              const isSelected = selectedDesign?.svgUri === design.svgUri;
+
+              return (
                 <div
                   key={index}
                   className="designItem"
-                  onClick={() => handleApplyDesign(design)}
+                  onClick={() =>
+                    selectedButton === "first"
+                      ? handleClickDesign(design)
+                      : handleClickBestDesign()
+                  }
                 >
                   <img
                     src={design.pngUri}
                     alt="design"
                     className="designImage"
                   />
+
+                  {isSelected && (
+                    <button
+                      className="deleteButton"
+                      onClick={(e) => {
+                        e.stopPropagation(); // tıklamanın div onClick’ine gitmesini engelle
+                        handleDeleteDesign(design);
+                      }}
+                    >
+                      ✕
+                    </button>
+                  )}
                 </div>
-              </div>
-            ))
-          : bestDesigns.map((design, index) => (
-              <div key={index}>
-                {" "}
-                <div
-                  key={index}
-                  className="designItem"
-                  onClick={() => handleApplyDesign(design)}
-                >
-                  <img
-                    src={design.pngUri}
-                    alt="design"
-                    className="designImage"
-                  />
-                </div>
-              </div>
-            ))}
+              );
+            }
+          )}
       </div>
     </div>
   );

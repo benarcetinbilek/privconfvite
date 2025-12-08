@@ -1,3 +1,8 @@
 model yüklendikten sonra uv map export için uv varmi kontrol eder yoksa uyari verir
 uv varsa mesh isimlerini doner hangi meshelr seçildiyse yan tarafa uv map ciktisi gösterilir oan gore ayarlarlar
 
+
+
+toast.success("Design applied successfully!");
+    toast.warn("Dikkat etmen gereken bir şey var!");
+    toast.error("Bir hata oluştu!");

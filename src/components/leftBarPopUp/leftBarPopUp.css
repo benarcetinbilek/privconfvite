@@ -1,0 +1,64 @@
+.leftbarPopup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* solda popup */
+  align-items: center;
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+.popupTitle {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Grid scrollable */
+.popupGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.popupItem {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: 0.2s;
+  border: 1px solid var(--border-color);
+}
+
+.popupItem img {
+  width: 100%;
+  height: auto;
+}
+
+.popupItem.active {
+  border: 2px solid #4caf50;
+  border: 1px solid var(--button-bg-color-third);
+  background-color: var(--button-bg-color-hover);
+}
+
+.applyBtn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--button-bg-color-third);
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.applyBtn.disabled {
+  background: #777;
+  cursor: not-allowed;
+}

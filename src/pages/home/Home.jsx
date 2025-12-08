@@ -6,9 +6,11 @@ import uiStore from "../../store/uiStore";
 import InfoPopup from "../../components/popup/infoPopup/InfoPopup.jsx";
 import ShareDesignPopUp from "../../components/popup/shareDesignPopup/ShareDesignPopup.jsx";
 import TutorialPopUp from "../../components/popup/tutorialPopUp/TutorialPopUp.jsx";
+import LoadingOverlay from "../../components/loadingOverlay/LoadingOverlay.jsx";
+import { ToastContainer } from "react-toastify";
 
 const Home = () => {
-  const { footerButtonsActive } = uiStore();
+  const { footerButtonsActive, isLoading } = uiStore();
 
   console.log("Home");
 
@@ -30,6 +32,16 @@ const Home = () => {
 
   return (
     <div className="homeContainer">
+      {isLoading && <LoadingOverlay />}
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        pauseOnHover
+        theme="light"
+      />
+
       <div className="topContainer">
         <LeftBar />
         <CanvasForModel />

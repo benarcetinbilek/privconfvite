@@ -20,7 +20,7 @@ const Header = ({
             className={`headerButton ${
               selectedButton === "first" && "selected"
             }`}
-            onClick={() => onButtonClick("first")}
+            onClick={() => onButtonClick && onButtonClick("first")}
           >
             {buttons.first}
           </div>
@@ -28,7 +28,7 @@ const Header = ({
             className={`headerButton ${
               selectedButton === "second" && "selected"
             }`}
-            onClick={() => onButtonClick("second")}
+            onClick={() => onButtonClick && onButtonClick("second")}
           >
             {buttons.second}
           </div>

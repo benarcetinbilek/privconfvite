@@ -3,12 +3,65 @@ import { create } from "zustand";
 //TODO-- set when app initializes
 const configStore = create((set, get) => ({
   //use this as main design config which parts can have which design types
-  designConfig: {},
+  designConfig: [
+    { pngUri: "/1.png", svgUri: "/1.svg" },
+    { pngUri: "/2.png", svgUri: "/2.svg" },
+    { pngUri: "/3.png", svgUri: "/3.svg" },
+    { pngUri: "/4.png", svgUri: "/4.svg" },
+    { pngUri: "/1.png", svgUri: "/1.svg" },
+    { pngUri: "/2.png", svgUri: "/2.svg" },
+    { pngUri: "/3.png", svgUri: "/3.svg" },
+    { pngUri: "/4.png", svgUri: "/4.svg" },
+    { pngUri: "/1.png", svgUri: "/1.svg" },
+    { pngUri: "/2.png", svgUri: "/2.svg" },
+    { pngUri: "/3.png", svgUri: "/3.svg" },
+    { pngUri: "/4.png", svgUri: "/4.svg" },
+    { pngUri: "/1.png", svgUri: "/1.svg" },
+    { pngUri: "/2.png", svgUri: "/2.svg" },
+    { pngUri: "/3.png", svgUri: "/3.svg" },
+    { pngUri: "/4.png", svgUri: "/4.svg" },
+  ],
   setDesignConfig: (val) => set({ designConfig: val }),
 
+  bestDesignConfig: [
+    { pngUri: "/1.png", svgUri: "/1.svg" },
+    { pngUri: "/2.png", svgUri: "/2.svg" },
+    { pngUri: "/3.png", svgUri: "/3.svg" },
+    { pngUri: "/4.png", svgUri: "/4.svg" },
+    { pngUri: "/5.png", svgUri: "/5.svg" },
+    { pngUri: "/1.png", svgUri: "/1.svg" },
+    { pngUri: "/2.png", svgUri: "/2.svg" },
+    { pngUri: "/3.png", svgUri: "/3.svg" },
+    { pngUri: "/4.png", svgUri: "/4.svg" },
+    { pngUri: "/5.png", svgUri: "/5.svg" },
+    { pngUri: "/1.png", svgUri: "/1.svg" },
+    { pngUri: "/2.png", svgUri: "/2.svg" },
+    { pngUri: "/3.png", svgUri: "/3.svg" },
+    { pngUri: "/4.png", svgUri: "/4.svg" },
+    { pngUri: "/5.png", svgUri: "/5.svg" },
+  ],
+  setBestDesignConfig: (val) => set({ bestDesignConfig: val }),
+
   //use this as main design config to store all design related data pngs and svgs
+  //TODO -- check if design locations have only 1 item if so use that design for all parts
   desingUrls: {},
   setDesingUrls: (val) => set({ desingUrls: val }),
+
+  desingLocationsUrls: [
+    {
+      id: "location-1",
+      pngUri: "/positionsForDesign/front.png",
+      name: "Front",
+    },
+    { id: "location-2", pngUri: "/positionsForDesign/back.png", name: "Back" },
+    { id: "location-3", pngUri: "/positionsForDesign/left.png", name: "Left" },
+    {
+      id: "location-4",
+      pngUri: "/positionsForDesign/right.png",
+      name: "Right",
+    },
+  ],
+  setDesingLocationsUrls: (val) => set({ desingLocations: val }),
 
   //use this inside color canvas and uvmap export to color a constant part
   constantColoredPartConfig: { LeftPocket: "Front" },

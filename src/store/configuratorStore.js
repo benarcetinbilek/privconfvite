@@ -60,19 +60,17 @@ const configuratorStore = create((set, get) => ({
   // });
 
   itemsOnModel: [
-    {
-      id: "1",
-      type: "design",
-      textureUri: "/1.svg",
-      texturePngUri: "/1.png",
-      x: 0,
-      y: 0,
-      scale: 1,
-      rotation: 0,
-      layerIndex: 0,
-      isActive: true,
-      appliedPart: ["LeftSleeve", "RightSleeve"],
-    },
+    // {
+    //   id: "1",
+    //   type: "design",
+    //   textureUri: "/1.svg",
+    //   texturePngUri: "/1.png",
+    //   x: 0,
+    //   y: 0,
+    //   layerIndex: 0,
+    //   isActive: true,
+    //   appliedPart: ["LeftSleeve", "RightSleeve"],
+    // },
     {
       id: "2",
       type: "pattern",
@@ -179,19 +177,7 @@ const configuratorStore = create((set, get) => ({
       appliedPart: ["LeftSleeve", "RightSleeve"],
       logoName: "Logo 3",
     },
-    {
-      id: "10",
-      type: "design",
-      textureUri: "/1.svg",
-      texturePngUri: "/1.png",
-      x: 0,
-      y: 0,
-      scale: 1,
-      rotation: 0,
-      layerIndex: 0,
-      isActive: true,
-      appliedPart: ["LeftSleeve", "RightSleeve"],
-    },
+
     {
       id: "11",
       type: "pattern",
