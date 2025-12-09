@@ -10,10 +10,31 @@
   z-index: 999;
 }
 
+.popupTopContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.closeBtn {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-color);
+  background: var(--button-bg-color-active);
+  border: 1px solid var(--border-color);
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
 .popupTitle {
   margin: 10px;
   font-size: 20px;
   font-weight: 600;
+  margin-left: 60px;
 }
 
 /* Grid scrollable */

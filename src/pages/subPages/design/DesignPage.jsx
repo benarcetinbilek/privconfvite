@@ -7,6 +7,7 @@ import configuratorStore from "../../../store/configuratorStore";
 import { toast } from "react-toastify";
 import LeftBarPopup from "../../../components/leftBarPopUp/LeftBarPopUp";
 import { add } from "three/tsl";
+import { ButtonToggle } from "../../../components/buttons/Buttons";
 
 function DesignPage() {
   const { designConfig, bestDesignConfig, desingLocationsUrls } = configStore();
@@ -15,7 +16,8 @@ function DesignPage() {
   const addItem = configuratorStore((state) => state.addItem);
   const updateItem = configuratorStore((state) => state.updateItem);
   const removeItem = configuratorStore((state) => state.removeItem);
-  const designItems = configuratorStore.getState().getItemsByType("design");
+  const itemsOnModel = configuratorStore((state) => state.itemsOnModel);
+  const designItems = itemsOnModel.filter((item) => item.type === "design");
 
   console.log("designItems:", designItems);
   const [selectedButton, setSelectedButton] = useState("first");
@@ -36,7 +38,7 @@ function DesignPage() {
     // setIsLoading(true, "Applying design...");
   };
 
-  const handleApplyDesign = (selectedLocation) => {
+  const handleApplyOrUpdateDesign = (selectedLocation) => {
     //logic to apply design
 
     console.log("Gelen seçili location:", selectedLocation);
@@ -53,6 +55,7 @@ function DesignPage() {
             layerIndex: 0,
             isActive: true,
             appliedPart: selectedLocation,
+            opacity: 1,
           });
         } else {
           //update existing design items
@@ -61,6 +64,7 @@ function DesignPage() {
             texturePngUri: selectedDesign.pngUri,
             isActive: true,
             appliedPart: selectedLocation,
+            opacity: 1,
           });
         }
       });
@@ -77,6 +81,22 @@ function DesignPage() {
       });
     }
   };
+
+  const handleOntoggleDesign = () => {
+    console.log("Toggling design active state");
+    startTransition(() => {
+      updateItem(designItems[0].id, {
+        isActive: !designItems[0].isActive,
+      });
+    });
+  };
+
+  const handleTransparencyChange = (e) => {
+    const newOpacity = parseFloat(e.target.value);
+    startTransition(() => {
+      updateItem(designItems[0].id, { opacity: newOpacity });
+    });
+  };
   //TODO -- check if there are best designs if not remove buttons
   return (
     <div className="designPageContainer">
@@ -88,19 +108,48 @@ function DesignPage() {
         selectedButton={selectedButton}
         onButtonClick={isDesignPopup ? undefined : handleHeaderButtonClick}
       />
+      {designItems.length > 0 && !isDesignPopup && (
+        <div className="designSettings">
+          <div className="designControlsContainer">
+            {/* Sol kolon: Toggle */}
+            <div className="toggleContainer">
+              <span>ON/OFF</span>
+              <ButtonToggle
+                isActive={designItems[0]?.isActive}
+                onToggle={handleOntoggleDesign}
+              />
+            </div>
+
+            {/* Sağ kolon: Opacity */}
+            <div className="opacityContainer">
+              <label htmlFor="opacityRange">
+                Opacity: {designItems[0].opacity}
+              </label>
+              <input
+                id="opacityRange"
+                type="range"
+                min={0}
+                max={1}
+                step={0.01}
+                value={designItems[0].opacity}
+                onChange={(e) => handleTransparencyChange(e)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
       <div className="designContent">
         {isDesignPopup && (
           <LeftBarPopup
             designLocations={desingLocationsUrls}
-            onApply={handleApplyDesign}
+            onApply={handleApplyOrUpdateDesign}
+            onClickClose={() => setIsDesignPopup(false)}
           />
         )}
 
         {!isDesignPopup &&
           (selectedButton === "first" ? designConfig : bestDesignConfig).map(
             (design, index) => {
-              const isSelected = selectedDesign?.svgUri === design.svgUri;
-
               return (
                 <div
                   key={index}
@@ -116,18 +165,6 @@ function DesignPage() {
                     alt="design"
                     className="designImage"
                   />
-
-                  {isSelected && (
-                    <button
-                      className="deleteButton"
-                      onClick={(e) => {
-                        e.stopPropagation(); // tıklamanın div onClick’ine gitmesini engelle
-                        handleDeleteDesign(design);
-                      }}
-                    >
-                      ✕
-                    </button>
-                  )}
                 </div>
               );
             }

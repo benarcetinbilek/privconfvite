@@ -6,10 +6,10 @@ import { Suspense } from "react";
 import { Vector3, TextureLoader } from "three";
 import { useLoader } from "@react-three/fiber";
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
-import configuratorStore from "../../store/configuratorStore";
+import configStore from "../../store/configStore";
 
 export function ModelViewer() {
-  const { setGeometry } = configuratorStore();
+  const { setGeometry } = configStore();
   const [startTime] = useState(() => performance.now()); // başlama zamanı
 
   const { nodes } = useGLTF("/model.glb");

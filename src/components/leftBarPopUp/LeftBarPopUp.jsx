@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./leftBarPopup.css";
+import { BaselineKeyboardArrowLeft } from "../../assets/svgs";
 
-export default function LeftBarPopup({ designLocations, onApply }) {
+export default function LeftBarPopup({
+  designLocations,
+  onApply,
+  onClickClose,
+}) {
   const [selected, setSelected] = useState([]);
 
   const handleSelect = (index) => {
@@ -17,7 +22,12 @@ export default function LeftBarPopup({ designLocations, onApply }) {
 
   return (
     <div className="leftbarPopup">
-      <h3 className="popupTitle">Choose Locations</h3>
+      <div className="popupTopContainer">
+        <button className="closeBtn" onClick={onClickClose}>
+          <BaselineKeyboardArrowLeft /> back
+        </button>
+        <h3 className="popupTitle">Choose Locations</h3>
+      </div>
 
       <div className="popupGrid">
         {designLocations.map((item, i) => (

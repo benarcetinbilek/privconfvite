@@ -6,3 +6,15 @@ uv varsa mesh isimlerini doner hangi meshelr seçildiyse yan tarafa uv map cikti
 toast.success("Design applied successfully!");
     toast.warn("Dikkat etmen gereken bir şey var!");
     toast.error("Bir hata oluştu!");
+
+
+
+
+
+
+       <div className="designSettings">
+          <button>delete buttin</button>
+          //ontoggle design active/inactive 
+          //transparency length selector button
+        </div>
+guzel bir dizayn yap buraya delete butonu solda olsun digerleri sag tarafta olsun alt alta

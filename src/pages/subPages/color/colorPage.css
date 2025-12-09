@@ -1,0 +1,4 @@
+.colorPageContainer {
+  display: flex;
+  flex-direction: column;
+}

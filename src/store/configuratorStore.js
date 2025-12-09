@@ -2,8 +2,7 @@ import { create } from "zustand";
 
 const configuratorStore = create((set, get) => ({
   //TODO -- this geometry might need to be in a separate store later on
-  geometry: {},
-  setGeometry: (val) => set({ geometry: val }),
+
   //TODO-- set when app initializes
   colorsForParts: {
     LeftSleeve: {
@@ -96,7 +95,7 @@ const configuratorStore = create((set, get) => ({
       rotation: 0,
       layerIndex: 0,
       isActive: true,
-      appliedPart: "Back",
+      appliedPart: "Collar",
       firstColor: "#ff0000",
       secondColor: "#0000ff",
       isGradient: true,
@@ -178,36 +177,6 @@ const configuratorStore = create((set, get) => ({
       logoName: "Logo 3",
     },
 
-    {
-      id: "11",
-      type: "pattern",
-      textureUri: "/pattern-1.svg",
-      x: 0,
-      y: 0,
-      scale: 1,
-      rotation: 0,
-      layerIndex: 0,
-      isActive: true,
-      appliedPart: "Front",
-      firstColor: "#ff0000",
-      secondColor: "#0000ff",
-      isGradient: true,
-    },
-    {
-      id: "12",
-      type: "pattern",
-      textureUri: "/pattern-2.svg",
-      x: 0,
-      y: 0,
-      scale: 1,
-      rotation: 0,
-      layerIndex: 0,
-      isActive: true,
-      appliedPart: "Back",
-      firstColor: "#ff0000",
-      secondColor: "#0000ff",
-      isGradient: true,
-    },
     {
       id: "13",
       type: "text",
@@ -323,6 +292,9 @@ const configuratorStore = create((set, get) => ({
     if (items.length === 0) return 0;
     return Math.max(...items.map((i) => parseInt(i.id)));
   },
+
+  selectItems: (state, type) =>
+    state.itemsOnModel.filter((item) => item.type === type),
 
   //how to use
   // Tek property update

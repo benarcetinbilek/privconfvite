@@ -1,0 +1,124 @@
+.colorPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--text-color);
+}
+
+/* --- DROPDOWN ANİMASYON --- */
+.dropdownContent {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease-in-out;
+}
+
+.dropdownContent.open {
+  max-height: 500px; /* içerikten fazla olacak, sorun yok */
+  opacity: 1;
+  margin-top: 12px;
+}
+
+/* Mevcut preset grid scroll çalışıyor */
+
+.colorPickerTop {
+  border: 1px solid red;
+  flex: 1;
+}
+
+/* HEADER */
+.colorPageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.backBtn {
+  padding: 6px 12px;
+  background: #3a3a3a;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+.backBtn:hover {
+  background: #4c4c4c;
+}
+
+.chooseColorTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* SECTION BOX */
+.sectionBox {
+  border-bottom: 1px solid var(--text-color);
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.gradientPickerContainer {
+  margin-top: 12px;
+}
+
+/* PRESET COLORS SCROLL */
+.presetColorsScroll {
+  margin-top: 12px;
+  max-height: 150px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  padding-right: 6px;
+}
+
+.presetColorBox {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #555;
+}
+.presetColorBox:hover {
+  transform: scale(1.08);
+  transition: 0.15s;
+}
+
+/* LAST USED COLORS */
+.colorPickerLastUsedColors {
+  border: 1px solid purple;
+}
+.lastUsedTitle {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.lastUsedColorsGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+
+.lastUsedColorBox {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #555;
+}
+.lastUsedColorBox:hover {
+  transform: scale(1.1);
+  transition: 0.15s;
+}

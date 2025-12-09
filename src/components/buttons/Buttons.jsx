@@ -44,6 +44,22 @@ const ButtonFooterCheckout = ({ onClick, label }) => {
   );
 };
 
+const ButtonToggle = ({ isActive, onToggle }) => {
+  const handleClick = (e) => {
+    e.stopPropagation(); // 🔥 parent click event'ine gitmeyi durdurur
+    onToggle();
+  };
+
+  return (
+    <div
+      className={`toggleSwitch ${isActive ? "on" : ""}`}
+      onClick={handleClick}
+    >
+      <div className="toggleThumb" />
+    </div>
+  );
+};
+
 const ButtonForColors = ({
   onClick,
   color,
@@ -78,11 +94,12 @@ const ButtonForPatterns = ({
   secondColor,
   isGradient = false,
   title,
-  isActive = true,
+  isActive = false,
   onToggle,
   patternUri,
   isLayerOrder = false,
 }) => {
+  console.log("ButtonForPatterns:", isActive);
   return (
     <div className="colorButton" onClick={onClick}>
       {/* Pattern circle */}
@@ -90,9 +107,7 @@ const ButtonForPatterns = ({
       {/* Title */}
       <span className="colorTitle">{title}</span>
       {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
-      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
-        <div className="toggleThumb" />
-      </div>
+      <ButtonToggle isActive={isActive} onToggle={onToggle} />
       {/* Arrow */}
 
       {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
@@ -106,7 +121,7 @@ const ButtonForText = ({
   secondColor,
   isGradient = false,
   title,
-  isActive = true,
+  isActive = false,
   onToggle,
   isLayerOrder = false,
 }) => {
@@ -118,9 +133,7 @@ const ButtonForText = ({
       <span className="colorTitle">{title}</span>
 
       {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
-      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
-        <div className="toggleThumb" />
-      </div>
+      <ButtonToggle isActive={isActive} onToggle={ontoggle} />
 
       {/* Arrow */}
       {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
@@ -146,9 +159,7 @@ const ButtonForSticker = ({
       <span className="colorTitle">{title}</span>
 
       {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
-      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
-        <div className="toggleThumb" />
-      </div>
+      <ButtonToggle isActive={isActive} onToggle={ontoggle} />
 
       {/* Arrow */}
       {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
@@ -159,7 +170,7 @@ const ButtonForSticker = ({
 const ButtonForLogo = ({
   onClick,
   title,
-  isActive = true,
+  isActive = false,
   onToggle,
   logoUri,
   isLayerOrder = false,
@@ -173,9 +184,7 @@ const ButtonForLogo = ({
       <span className="colorTitle">{title}</span>
 
       {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
-      <div className={`toggleSwitch ${isActive ? "on" : ""}`}>
-        <div className="toggleThumb" />
-      </div>
+      <ButtonToggle isActive={isActive} onToggle={ontoggle} />
 
       {/* Arrow */}
       {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
@@ -242,4 +251,5 @@ export {
   ButtonForSticker,
   ButtonForLogo,
   UniversalButton,
+  ButtonToggle,
 };

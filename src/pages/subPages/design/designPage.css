@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 .designContent {
@@ -38,6 +39,49 @@
   width: 100%;
   height: 100%;
   object-fit: contain; /* ya da cover */
+}
+
+.designSettings {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 0 30px 0px 30px;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  z-index: 999;
+  height: 50px;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.designSettingButton {
+  align-self: flex-start; /* sol üst */
+}
+
+.designControlsContainer {
+  display: flex;
+  justify-content: space-between; /* sol + sağ kolon */
+  gap: 20px;
+}
+
+/* Sol kolon: Toggle */
+.toggleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+/* Sağ kolon: Opacity slider */
+.opacityContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
 }
 
 @media (max-width: 600px) {

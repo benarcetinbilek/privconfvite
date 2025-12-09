@@ -2,6 +2,8 @@ import { create } from "zustand";
 
 //TODO-- set when app initializes
 const configStore = create((set, get) => ({
+  geometry: {},
+  setGeometry: (val) => set({ geometry: val }),
   //use this as main design config which parts can have which design types
   designConfig: [
     { pngUri: "/1.png", svgUri: "/1.svg" },
