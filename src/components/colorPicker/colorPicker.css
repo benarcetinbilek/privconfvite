@@ -13,39 +13,57 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+  pointer-events: none;
   transition: max-height 0.35s ease, opacity 0.25s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdownContent.open {
-  max-height: 500px; /* içerikten fazla olacak, sorun yok */
+  max-height: 100%; /* Max sınır */
   opacity: 1;
-  margin-top: 12px;
+  pointer-events: auto;
+}
+
+.gradientSelectorContainer {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 5px 0 10px 0;
+}
+
+.gradientSelectorButton {
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.gradientSelectorButton.active {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-color);
+  background: var(--button-bg-color-active);
+  border: 1px solid var(--border-color);
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: var(--text-color-active);
 }
 
 /* Mevcut preset grid scroll çalışıyor */
 
 .colorPickerTop {
-  border: 1px solid red;
   flex: 1;
-}
-
-/* HEADER */
-.colorPageHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.backBtn {
-  padding: 6px 12px;
-  background: #3a3a3a;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
-.backBtn:hover {
-  background: #4c4c4c;
 }
 
 .chooseColorTitle {
@@ -57,7 +75,7 @@
 .sectionBox {
   border-bottom: 1px solid var(--text-color);
   padding: 12px;
-  margin-top: 10px;
+  border: 2px solid var(--border-color);
 }
 
 .sectionHeader {
@@ -68,6 +86,13 @@
   font-weight: 500;
 }
 
+.sketchPicker {
+  width: 95% !important;
+  /* border: red 2px solid; */
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .gradientPickerContainer {
   margin-top: 12px;
 }
@@ -75,34 +100,53 @@
 /* PRESET COLORS SCROLL */
 .presetColorsScroll {
   margin-top: 12px;
-  max-height: 150px;
+  max-height: 400px;
+  height: 100%;
+  width: 100%;
   overflow-y: auto;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 8px;
-  padding-right: 6px;
 }
 
 .presetColorBox {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 6px;
   cursor: pointer;
-  border: 1px solid #555;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
 }
+
+.presetColorBox.selected {
+  border: 2px solid var(--button-bg-color-active);
+}
+
 .presetColorBox:hover {
   transform: scale(1.08);
   transition: 0.15s;
 }
 
-/* LAST USED COLORS */
-.colorPickerLastUsedColors {
-  border: 1px solid purple;
+.presetColor {
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
 }
+
+/* LAST USED COLORS */
 .lastUsedTitle {
   font-size: 14px;
   margin-bottom: 6px;
   font-weight: 600;
+  text-align: center;
+}
+
+.lastUsedColorHr {
+  margin: 5px 0 10px 0;
+  border: 1px solid var(--border-color);
 }
 
 .lastUsedColorsGrid {
@@ -114,10 +158,10 @@
 .lastUsedColorBox {
   width: 26px;
   height: 26px;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
-  border: 1px solid #555;
 }
+
 .lastUsedColorBox:hover {
   transform: scale(1.1);
   transition: 0.15s;

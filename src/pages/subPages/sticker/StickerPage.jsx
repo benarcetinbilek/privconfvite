@@ -1,9 +1,9 @@
 import "./stickerPage.css";
-import Header from "../../../components/ui/Header";
 import AssetDrawer from "../../../components/assetDrawer/AssetDrawer";
 import configuratorStore from "../../../store/configuratorStore";
 import { ButtonForSticker } from "../../../components/buttons/Buttons";
 import configStore from "../../../store/configStore";
+import Header from "../../../components/header/Header";
 
 function StickerPage() {
   console.log("StickerPage");
@@ -21,7 +21,7 @@ function StickerPage() {
     <div className="stickerPageContainer">
       {" "}
       <Header title={"Sticker"} subtitle={"Sticker"} />
-      <AssetDrawer assets={stickerAssets} />
+      <AssetDrawer assets={stickerAssets} selectedItems={stickerItems} />
       <hr className="stickerHr" />
       <div className="stickerScrollArea">
         {stickerItems.length > 0 &&

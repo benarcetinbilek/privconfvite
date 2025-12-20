@@ -1,5 +1,5 @@
 import { startTransition, useState } from "react";
-import Header from "../../../components/ui/Header";
+import Header from "../../../components/header/Header";
 import "./designPage.css";
 import configStore from "../../../store/configStore";
 import uiStore from "../../../store/uiStore";

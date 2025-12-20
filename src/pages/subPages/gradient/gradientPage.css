@@ -1,0 +1,4 @@
+.gradientPageContainer {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./leftBarPopup.css";
-import { BaselineKeyboardArrowLeft } from "../../assets/svgs";
+import { SubHeader } from "../subHeader/SubHeader";
 
 export default function LeftBarPopup({
   designLocations,
@@ -22,12 +22,7 @@ export default function LeftBarPopup({
 
   return (
     <div className="leftbarPopup">
-      <div className="popupTopContainer">
-        <button className="closeBtn" onClick={onClickClose}>
-          <BaselineKeyboardArrowLeft /> back
-        </button>
-        <h3 className="popupTitle">Choose Locations</h3>
-      </div>
+      <SubHeader onClick={onClickClose} title={"Please Choose Part"} />
 
       <div className="popupGrid">
         {designLocations.map((item, i) => (

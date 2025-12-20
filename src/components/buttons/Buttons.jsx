@@ -1,4 +1,7 @@
-import { BaselineKeyboardArrowRight } from "../../assets/svgs";
+import {
+  BaselineKeyboardArrowLeft,
+  BaselineKeyboardArrowRight,
+} from "../../assets/svgs";
 import "./buttons.css";
 
 // Buttons for UI
@@ -87,6 +90,7 @@ const ButtonForColors = ({
     </div>
   );
 };
+
 //TODO -- isGradient is false by default check if it works fine or there will be glitch
 const ButtonForPatterns = ({
   onClick,
@@ -192,54 +196,6 @@ const ButtonForLogo = ({
   );
 };
 
-const UniversalButton = ({
-  title,
-  onClick,
-  isActive = true,
-  onToggle,
-  type = "default", // "color" | "pattern" | "text" | "logo" | "sticker"
-  color,
-  secondColor,
-  isGradient = false,
-}) => {
-  return (
-    <div className="colorButton" onClick={onClick}>
-      {/* LEFT SIDE CONTENT (circle or pattern) */}
-      {type === "color" && (
-        <div
-          className="colorCircle"
-          style={{
-            background: isGradient
-              ? `linear-gradient(90deg, ${color}, ${secondColor})`
-              : color,
-          }}
-        />
-      )}
-
-      {type === "pattern" && <div className="colorCirclePattern"></div>}
-
-      {/* TITLE */}
-      <span className="colorTitle">{title}</span>
-
-      {/* INLINE TOGGLE (all types except color use this) */}
-      {type !== "color" && (
-        <div
-          className={`toggleSwitch ${isActive ? "on" : ""}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            onToggle?.(isActive);
-          }}
-        >
-          <div className="toggleThumb" />
-        </div>
-      )}
-
-      {/* Arrow icon */}
-      {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}
-    </div>
-  );
-};
-
 export {
   ReusableButtonPagination,
   ReusableButtonReverseForward,
@@ -250,6 +206,5 @@ export {
   ButtonForText,
   ButtonForSticker,
   ButtonForLogo,
-  UniversalButton,
   ButtonToggle,
 };

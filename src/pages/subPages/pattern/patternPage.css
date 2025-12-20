@@ -1,0 +1,4 @@
+.patternPageContainer {
+  display: flex;
+  flex-direction: column;
+}

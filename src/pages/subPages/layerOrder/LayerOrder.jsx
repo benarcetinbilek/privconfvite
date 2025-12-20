@@ -1,5 +1,4 @@
 import "./layerOrder.css";
-import Header from "../../../components/ui/Header";
 import configuratorStore from "../../../store/configuratorStore";
 import {
   ButtonForLogo,
@@ -24,6 +23,7 @@ import {
 } from "@dnd-kit/sortable";
 
 import SortableItem from "../../../components/sortableItem/SortableItem";
+import Header from "../../../components/header/Header";
 
 function LayerOrder() {
   const allItems = configuratorStore.getState().getAllItems();

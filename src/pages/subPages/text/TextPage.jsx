@@ -1,7 +1,7 @@
 import "./textPage.css";
-import Header from "../../../components/ui/Header";
 import configuratorStore from "../../../store/configuratorStore";
 import { ButtonForText } from "../../../components/buttons/Buttons";
+import Header from "../../../components/header/Header";
 
 function TextPage() {
   console.log("TextPage");

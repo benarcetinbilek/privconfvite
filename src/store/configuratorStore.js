@@ -83,7 +83,7 @@ const configuratorStore = create((set, get) => ({
       appliedPart: "Front",
       firstColor: "#ff0000",
       secondColor: "#0000ff",
-      isGradient: true,
+      isGradient: false,
     },
     {
       id: "3",

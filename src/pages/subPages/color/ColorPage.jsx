@@ -1,5 +1,5 @@
 import { color } from "three/tsl";
-import Header from "../../../components/ui/Header";
+import Header from "../../../components/header/Header";
 import configuratorStore from "../../../store/configuratorStore";
 import "./colorPage.css";
 import { ButtonForColors } from "../../../components/buttons/Buttons";
@@ -27,13 +27,17 @@ function ColorPage() {
     setSelectedPart(null);
   };
 
-  const handleColorApply = (colorConfig, firstColor) => {
+  const handleColorApply = (firstColor) => {
+    console.log("firstcolor", firstColor);
     updateColor(selectedPart, { firstColor, isGradient: false });
   };
 
   return (
     <div className="colorPageContainer">
-      <Header title={"Color"} subtitle={"Please Select a Part"} />
+      <Header
+        title={"Color"}
+        subtitle={isColorPickerOpen ? "Color Picker" : "Please Select a Part"}
+      />
       {!isColorPickerOpen &&
         Object.entries(colorsForParts).map(([part, config]) => (
           <ButtonForColors
@@ -50,6 +54,7 @@ function ColorPage() {
         <ColorPicker
           handleColorApply={handleColorApply}
           handleClickBack={handleClickBack}
+          firstColor={colorsForParts[selectedPart].firstColor}
         />
       )}
     </div>

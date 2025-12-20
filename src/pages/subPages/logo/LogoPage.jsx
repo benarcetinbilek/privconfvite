@@ -1,5 +1,5 @@
 import "./logoPage.css";
-import Header from "../../../components/ui/Header";
+import Header from "../../../components/header/Header";
 import UploadBox from "../../../components/uploadBox/UploadBox";
 import configuratorStore from "../../../store/configuratorStore";
 import { ButtonForLogo } from "../../../components/buttons/Buttons";
