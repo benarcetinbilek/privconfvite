@@ -7,9 +7,11 @@ import Header from "../../../components/header/Header";
 import { startTransition, useState } from "react";
 import { ItemSettings } from "../../../components/itemSettings/ItemSettings";
 import { ColorPicker } from "../../../components/colorPicker/ColorPicker";
+import LeftBarPopup from "../../../components/leftBarPopUp/LeftBarPopUp";
 
 function StickerPage() {
   //TODO -- sticker name could be a must in state otherwise layer order might not gonna work
+  const { commonLocationsUrls } = configStore();
   console.log("StickerPage");
   const stickerAssets = configStore.getState().getAllStickers();
 
@@ -24,6 +26,8 @@ function StickerPage() {
 
   const [selectedStickerId, setSelectedStickerId] = useState(null);
   const [selectedPage, setSelectedPage] = useState("sticker");
+  const [selectedTextureUri, setSelectedTextureUri] = useState(null);
+  console.log("selectedtexture", selectedTextureUri);
 
   const selectedItem = stickerItems.find(
     (item) => item.id === selectedStickerId
@@ -52,7 +56,7 @@ function StickerPage() {
         addItem({
           id: newId,
           type: "sticker",
-          textureUri: firstValue,
+          textureUri: selectedTextureUri,
           scale: 1,
           rotation: 0,
           x: firstValue,
@@ -66,7 +70,10 @@ function StickerPage() {
           gradientTransition: 0,
           layerIndex: newId,
           isActive: true,
+          isLocked: false,
         });
+        setSelectedTextureUri(null);
+        setSelectedPage("sticker");
         //TODO -- here must be model turner function model needs to turn to correct location
         return;
       }
@@ -96,25 +103,27 @@ function StickerPage() {
         });
         return;
       }
-      console;
       updateItem(selectedStickerId, { [key]: firstValue, isActive: true });
     });
   };
 
   return (
     <div className="stickerPageContainer">
-      {" "}
       <Header title={"Sticker"} subtitle={"Sticker"} />
       {selectedPage === "sticker" && (
         <AssetDrawer
           assets={stickerAssets}
           selectedItems={stickerItems}
-          onTextureApply={handleApplyorUpdateSticker}
+          onTextureApply={(key, texture) => {
+            setSelectedTextureUri(texture);
+            setSelectedPage("sticker location");
+            console.log("qweqweqwe");
+          }}
         />
       )}
-      <hr className="stickerHr" />
       {selectedPage === "sticker" && (
         <div className="stickerScrollArea">
+          <hr className="stickerHr" />
           {stickerItems.map((item, i) => (
             <ButtonForSticker
               key={item.id}
@@ -130,16 +139,32 @@ function StickerPage() {
           ))}
         </div>
       )}
+      {selectedPage === "sticker location" && (
+        <LeftBarPopup
+          assets={commonLocationsUrls}
+          onApply={handleApplyorUpdateSticker}
+          handleClickBack={() => {
+            setSelectedPage("sticker");
+            setSelectedTextureUri(null);
+          }}
+          type={"text"}
+        />
+      )}
+
       {selectedPage === "sticker settings" && (
         <ItemSettings
           type={"sticker"}
-          handleClickBack={() => handleClickBack("sticker")}
+          handleClickBack={() => {
+            handleClickBack("sticker");
+            setSelectedStickerId(null);
+          }}
           handleSettingsApply={handleApplyorUpdateSticker}
           title={"sticker"}
           item={selectedItem}
           handleSelectedPage={setSelectedPage}
         />
       )}
+
       {(selectedPage === "sticker color" ||
         selectedPage === "sticker gradient") && (
         <ColorPicker

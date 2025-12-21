@@ -1,3 +1,4 @@
+import { HorizontalCenter, OutlineLock } from "../../assets/svgs";
 import AssetDrawer from "../assetDrawer/AssetDrawer";
 import { SubHeader } from "../subHeader/SubHeader";
 import "./itemSettings.css";
@@ -79,60 +80,78 @@ export const ItemSettings = ({
             />
           </div>
 
-          {/* STICKER POSITION (X & Y) */}
-          {type === "sticker" && (
+          {/* STICKER POSITION (X) */}
+          {(type === "sticker" || type === "logo") && (
             <div className="setting">
-              <div className="settingtitle">X &amp; Y:</div>
+              <div className="settingtitle">X Coordinates: </div>
 
-              <div className="settingValue">
-                X: {Number(item?.x ?? 0).toFixed(2)} | Y:{" "}
-                {Number(item?.y ?? 0).toFixed(2)}
-              </div>
+              <div className="settingValue"></div>
 
               <div className="positionControls">
-                {/* SOL */}
-                <button
-                  type="button"
-                  className="positionBtn"
-                  onClick={() =>
-                    handleSettingsApply("x", Number(item?.x ?? 0) - 0.01)
-                  }
-                >
-                  ←
-                </button>
+                {/* X ROW */}
+                <div className="positionRow">
+                  <button
+                    type="button"
+                    className="positionBtn"
+                    onClick={() =>
+                      handleSettingsApply("x", Number(item?.x ?? 0) - 0.1)
+                    }
+                  >
+                    ←
+                  </button>
 
-                {/* SAĞ */}
-                <button
-                  type="button"
-                  className="positionBtn"
-                  onClick={() =>
-                    handleSettingsApply("x", Number(item?.x ?? 0) + 0.01)
-                  }
-                >
-                  →
-                </button>
+                  <div className="positionControlValue">
+                    {Number(item?.x ?? 0).toFixed(1)}
+                  </div>
 
-                {/* YUKARI */}
-                <button
-                  type="button"
-                  className="positionBtn"
-                  onClick={() =>
-                    handleSettingsApply("y", Number(item?.y ?? 0) + 0.01)
-                  }
-                >
-                  ↑
-                </button>
+                  <button
+                    type="button"
+                    className="positionBtn"
+                    onClick={() =>
+                      handleSettingsApply("x", Number(item?.x ?? 0) + 0.1)
+                    }
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
-                {/* AŞAĞI */}
-                <button
-                  type="button"
-                  className="positionBtn"
-                  onClick={() =>
-                    handleSettingsApply("y", Number(item?.y ?? 0) - 0.01)
-                  }
-                >
-                  ↓
-                </button>
+          {/* STICKER POSITION (Y) */}
+          {(type === "sticker" || type === "logo") && (
+            <div className="setting">
+              <div className="settingtitle">Y Coordinates:</div>
+
+              <div className="settingValue"></div>
+
+              <div className="positionControls">
+                {/* Y ROW */}
+                <div className="positionRow">
+                  <button
+                    type="button"
+                    className="positionBtn"
+                    onClick={() =>
+                      handleSettingsApply("y", Number(item?.y ?? 0) + 0.1)
+                    }
+                  >
+                    ↑
+                  </button>
+
+                  <div className="positionControlValue">
+                    {Number(item?.y ?? 0).toFixed(1)}
+                  </div>
+
+                  <button
+                    type="button"
+                    className="positionBtn"
+                    onClick={() =>
+                      handleSettingsApply("y", Number(item?.y ?? 0) - 0.1)
+                    }
+                  >
+                    ↓
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -275,7 +294,41 @@ export const ItemSettings = ({
           )}
 
           {/* CENTER ITEM */}
+          {type !== "pattern" && (
+            <div className="setting">
+              <div className="settingtitle">Center Item:</div>
+              <div></div>
+              <button
+                className="settingButtonCommon"
+                onClick={() => handleSettingsApply("centerize", null)}
+              >
+                <HorizontalCenter />
+              </button>
+            </div>
+          )}
+
           {/* LOCK ITEM */}
+          {type !== "pattern" && (
+            <div className="setting">
+              <div className="settingtitle">Lock item:</div>
+              <div></div>
+              <div className="settingCommonButtonsWrapper">
+                <div>{`${item.isLocked ? "locked" : "not locked"}`}</div>
+
+                <button
+                  className="settingButtonCommon"
+                  onClick={() =>
+                    handleSettingsApply(
+                      "isLocked",
+                      item.isLocked ? false : true
+                    )
+                  }
+                >
+                  <OutlineLock />
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* DELETE BUTTON */}
           <div className="setting">
@@ -288,8 +341,6 @@ export const ItemSettings = ({
               Delete
             </button>
           </div>
-
-          {type !== "pattern" && <div></div>}
         </div>
       )}
     </div>

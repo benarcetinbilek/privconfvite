@@ -188,7 +188,7 @@ const ButtonForLogo = ({
       <span className="colorTitle">{title}</span>
 
       {/* INLINE TOGGLE SWITCH – direkt component içine gömülü */}
-      <ButtonToggle isActive={isActive} onToggle={ontoggle} />
+      <ButtonToggle isActive={isActive} onToggle={onToggle} />
 
       {/* Arrow */}
       {!isLayerOrder && <BaselineKeyboardArrowRight className="arrowIcon" />}

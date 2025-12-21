@@ -86,6 +86,71 @@
   cursor: pointer;
 }
 
+.positionControls {
+  display: flex;
+  flex-direction: row; /* 🔥 2 satır olsun */
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.positionRow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.positionControlValue {
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  min-width: 60px;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 600;
+  color: var(--text-color);
+  background: white; /* temana göre istersen sil */
+}
+
+.positionBtn {
+  border: 1px solid var(--border-color);
+  background-color: var(--button-bg-color-active, #fff);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.positionBtn:active {
+  transform: translateY(1px);
+}
+
+.settingCommonButtonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color);
+}
+
+.settingButtonCommon {
+  border: 1px solid var(--border-color);
+  background-color: var(--button-bg-color-active, #fff);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 6px;
+  cursor: pointer;
+  justify-self: end;
+}
+
 /* mobil / dar alanlar için */
 @media (max-width: 480px) {
   .setting {

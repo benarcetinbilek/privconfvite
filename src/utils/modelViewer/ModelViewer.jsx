@@ -7,6 +7,7 @@ import { Vector3, TextureLoader } from "three";
 import { useLoader } from "@react-three/fiber";
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import configStore from "../../store/configStore";
+import configuratorStore from "../../store/configuratorStore";
 
 export function ModelViewer() {
   const { setGeometry } = configStore();
@@ -43,7 +44,7 @@ export function ModelViewer() {
 
 // export function ModelViewer() {
 //   const [startTime] = useState(() => performance.now());
-//   const { nodes } = useGLTF("/spized.glb");
+//   const { nodes } = useGLTF("/SmallHouse.glb");
 //   console.log("nodes", nodes);
 
 //   const normalMapTexture = useLoader(TextureLoader, "/normalMap.png");
@@ -82,7 +83,7 @@ export function ModelViewer() {
 // export function ModelViewer() {
 //   const { setGeometry } = configuratorStore();
 //   const [startTime] = useState(() => performance.now());
-//   const { nodes } = useGLTF("/spized.glb");
+//   const { nodes } = useGLTF("/Full Drum Kit.glb");
 
 //   const normalMapTexture = useLoader(TextureLoader, "/normalMap.png");
 //   normalMapTexture.flipY = false;

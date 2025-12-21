@@ -82,6 +82,7 @@ function TextPage() {
           gradientTransition: 0,
           layerIndex: newId,
           isActive: true,
+          isLocked: false,
         });
         //TODO -- here must be model turner function model needs to turn to correct location
         setSelectedPage("text");

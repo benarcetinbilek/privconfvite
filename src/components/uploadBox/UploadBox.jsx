@@ -1,7 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./uploadBox.css";
 
-function UploadBox({ maxSizeMB = 5, allowedTypes }) {
+function UploadBox({ maxSizeMB = 5, allowedTypes, onHandleAdd }) {
+  //TODO -- check maybe you need to upload the file to server and work with the uri
   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
   const fileInputRef = useRef(null);
@@ -16,6 +17,13 @@ function UploadBox({ maxSizeMB = 5, allowedTypes }) {
   ];
 
   const finalAllowedTypes = allowedTypes || defaultAllowedTypes;
+
+  useEffect(() => {
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+    return () => URL.revokeObjectURL(url);
+  }, [file]);
 
   const validateFile = (uploadedFile) => {
     setError("");
@@ -35,12 +43,49 @@ function UploadBox({ maxSizeMB = 5, allowedTypes }) {
   };
 
   const handleFileSelect = (e) => {
-    validateFile(e.target.files[0]);
+    console.log("handkefileselect");
+    const uploadedFile = e.target.files?.[0];
+    if (!uploadedFile) return;
+
+    // validate
+    setError("");
+    if (!finalAllowedTypes.includes(uploadedFile.type)) {
+      setError("Only PNG, JPG, or SVG files are allowed.");
+      return;
+    }
+    if (uploadedFile.size > MAX_SIZE_BYTES) {
+      setError(`Max file size is ${maxSizeMB}MB.`);
+      return;
+    }
+
+    setFile(uploadedFile);
+
+    // ✅ textureUri üret
+    const textureUri = URL.createObjectURL(uploadedFile);
+
+    // ✅ logo yüklenince parent’a bildir
+    onHandleAdd("add", textureUri);
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
-    validateFile(e.dataTransfer.files[0]);
+    const uploadedFile = e.dataTransfer.files?.[0];
+    if (!uploadedFile) return;
+
+    setError("");
+    if (!finalAllowedTypes.includes(uploadedFile.type)) {
+      setError("Only PNG, JPG, or SVG files are allowed.");
+      return;
+    }
+    if (uploadedFile.size > MAX_SIZE_BYTES) {
+      setError(`Max file size is ${maxSizeMB}MB.`);
+      return;
+    }
+
+    setFile(uploadedFile);
+
+    const textureUri = URL.createObjectURL(uploadedFile);
+    onHandleAdd("add", textureUri);
   };
 
   const handleDragOver = (e) => e.preventDefault();
