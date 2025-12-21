@@ -6,6 +6,7 @@ import configuratorStore from "../../../store/configuratorStore";
 import { startTransition, useState } from "react";
 import { getItems } from "../../../helper/getItems";
 import { ItemSettings } from "../../../components/itemSettings/ItemSettings";
+import { ColorPicker } from "../../../components/colorPicker/ColorPicker";
 
 function PatternPage() {
   console.log("PatternPage");
@@ -24,13 +25,18 @@ function PatternPage() {
   const [selectedPatternId, setSelectedPatternId] = useState(null);
   const [selectedPart, setSelectedPart] = useState(null);
 
+  const selectedItem = patternItems.find(
+    (item) => item.id === selectedPatternId
+  );
+
   console.log("Pattern items on model:", patternItems);
 
   const handleOntogglePattern = (id) => {
+    const item = patternItems.find((i) => i.id === id);
+    if (!item) return;
+
     startTransition(() => {
-      updateItem(id, {
-        isActive: !patternItems.find((item) => item.id === id).isActive,
-      });
+      updateItem(id, { isActive: !item.isActive });
     });
   };
 
@@ -38,35 +44,58 @@ function PatternPage() {
     setSelectedPage(page);
     if (page === "pattern") setSelectedPatternId(null);
   };
-  const handleApplyorUpdatePattern = (key, value) => {
-    console.log("handleApplyorUpdatePattern", key, value);
-    console.log("selectedPatternId", selectedPatternId);
 
+  const handleApplyorUpdatePattern = (key, firstValue, secondValue) => {
     startTransition(() => {
-      if (selectedPatternId && key === "delete") {
-        console.log("handleApplyorUpdatePatterndelete", key, value);
-        removeItem(selectedPatternId);
-        setSelectedPatternId(null);
-        console.log("items", patternItems);
-      } else if (selectedPatternId) {
-        updateItem(selectedPatternId, { [key]: value, isActive: true });
-      } else {
+      if (!selectedPatternId) {
         const newId = (getMaxId() + 1).toString();
         addItem({
           id: newId,
           type: "pattern",
-          textureUri: value,
+          textureUri: firstValue,
           scale: 1,
           rotation: 0,
+          opacity: 1,
           appliedPart: selectedPart,
-          firstColor: "#000000ff",
-          secondColor: "#000000ff",
+          firstColor: "#000000",
+          secondColor: "#000000",
           isGradient: false,
-          layerIndex: (getMaxId() + 1).toString(),
+          layerIndex: newId,
           isActive: true,
+          gradientRotation: 0,
+          gradientOffset: 0,
+          gradientTransition: 0,
         });
         setSelectedPatternId(newId);
+        return;
       }
+
+      if (key === "delete") {
+        removeItem(selectedPatternId);
+        setSelectedPatternId(null);
+        return;
+      }
+
+      if (key === "gradient") {
+        updateItem(selectedPatternId, {
+          firstColor: firstValue,
+          secondColor: secondValue,
+          isGradient: true,
+          isActive: true,
+        });
+        return;
+      }
+
+      if (key === "color") {
+        updateItem(selectedPatternId, {
+          firstColor: firstValue,
+          isGradient: false,
+          isActive: true,
+        });
+        return;
+      }
+
+      updateItem(selectedPatternId, { [key]: firstValue, isActive: true });
     });
   };
 
@@ -95,7 +124,9 @@ function PatternPage() {
               }}
               patternUri={foundPattern?.textureUri}
               isActive={foundPattern?.isActive}
-              onToggle={() => handleOntogglePattern(foundPattern.id)}
+              onToggle={() =>
+                foundPattern?.id && handleOntogglePattern(foundPattern.id)
+              }
             />
           );
         })}
@@ -107,15 +138,19 @@ function PatternPage() {
           handleSettingsApply={handleApplyorUpdatePattern}
           title={"Pattern"}
           assets={patternUrls}
-          item={patternItems.find((item) => item.id === selectedPatternId)}
+          item={selectedItem}
+          handleSelectedPage={setSelectedPage}
         />
       )}
 
-      {selectedPage === "pattern color" && (
+      {(selectedPage === "pattern color" ||
+        selectedPage === "pattern gradient") && (
         <ColorPicker
-          handleColorApply={handleColorApply}
+          handleColorApply={handleApplyorUpdatePattern}
           handleClickBack={() => handleClickBack("pattern settings")}
-          firstColor={colorsForParts[selectedPart].firstColor}
+          firstColor={selectedItem?.firstColor}
+          secondColor={selectedItem?.secondColor}
+          type={selectedPage === "pattern gradient" ? "gradient" : "color"}
         />
       )}
     </div>

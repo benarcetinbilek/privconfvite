@@ -24,7 +24,7 @@ function GradientPage() {
     setSelectedPart(null);
   };
 
-  const handleColorApply = (firstColor, secondColor) => {
+  const handleColorApply = (key, firstColor, secondColor) => {
     console.log("firstcolor", firstColor);
     console.log("secondcolor", secondColor);
     updateColor(selectedPart, { firstColor, secondColor, isGradient: true });
@@ -56,7 +56,7 @@ function GradientPage() {
           handleClickBack={handleClickBack}
           firstColor={colorsForParts[selectedPart].firstColor}
           secondColor={colorsForParts[selectedPart].secondColor}
-          isGradient={true}
+          type={"gradient"}
         />
       )}
     </div>

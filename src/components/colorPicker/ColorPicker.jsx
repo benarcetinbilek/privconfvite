@@ -10,9 +10,13 @@ export const ColorPicker = ({
   handleClickBack,
   firstColor,
   secondColor,
+  type,
 }) => {
   const [openSection, setOpenSection] = useState(null);
   const [picker, setPicker] = useState("first");
+  console.log("colorpicker", firstColor);
+  console.log("colorpicker", secondColor);
+  console.log("type", type);
 
   const toggleSection = (sectionName) => {
     if (openSection === sectionName) setOpenSection(null);
@@ -31,7 +35,7 @@ export const ColorPicker = ({
           handleClickBack={handleClickBack}
           title={"Please Choose Color"}
         />
-        {isGradient && (
+        {type === "gradient" && (
           <div className="gradientSelectorContainer">
             <button
               className={`gradientSelectorButton ${
@@ -74,8 +78,8 @@ export const ColorPicker = ({
                 disableAlpha={true}
                 onChange={(color) => {
                   picker === "first"
-                    ? handleColorApply(color.hex, secondColor)
-                    : handleColorApply(firstColor, color.hex);
+                    ? handleColorApply(type, color.hex, secondColor)
+                    : handleColorApply("gradient", firstColor, color.hex);
                 }}
               />
             }
@@ -112,8 +116,8 @@ export const ColorPicker = ({
                     }`}
                     onClick={() => {
                       picker === "first"
-                        ? handleColorApply(c.hex, secondColor)
-                        : handleColorApply(firstColor, c.hex);
+                        ? handleColorApply(type, c.hex, secondColor)
+                        : handleColorApply("gradient", firstColor, c.hex);
                     }}
                   >
                     <div
@@ -140,8 +144,8 @@ export const ColorPicker = ({
               style={{ backgroundColor: c.hex }}
               onClick={() => {
                 picker === "first"
-                  ? handleColorApply(c.hex, secondColor)
-                  : handleColorApply(firstColor, c.hex);
+                  ? handleColorApply(type, c.hex, secondColor)
+                  : handleColorApply("gradient", firstColor, c.hex);
               }}
             />
           ))}

@@ -10,6 +10,8 @@ import { add } from "three/tsl";
 import { ButtonToggle } from "../../../components/buttons/Buttons";
 
 function DesignPage() {
+  //TODO -- selected parts must be visible at first popup opens
+
   const { designConfig, bestDesignConfig, desingLocationsUrls } = configStore();
   const { setIsLoading } = uiStore();
   const getMaxId = configuratorStore((state) => state.getMaxId);
@@ -47,15 +49,22 @@ function DesignPage() {
       startTransition(() => {
         if (designItems.length === 0) {
           //add new design items
+          const newId = (getMaxId() + 1).toString();
           addItem({
-            id: (getMaxId() + 1).toString(),
+            id: newId,
             type: "design",
             textureUri: selectedDesign.svgUri,
             texturePngUri: selectedDesign.pngUri,
-            layerIndex: 0,
+            layerIndex: newId,
             isActive: true,
             appliedPart: selectedLocation,
             opacity: 1,
+            gradientRotation: 0,
+            gradientOffset: 0,
+            gradientTransition: 0,
+            firstColor: "#000000",
+            secondColor: "#000000",
+            isGradient: false,
           });
         } else {
           //update existing design items
@@ -108,6 +117,8 @@ function DesignPage() {
         selectedButton={selectedButton}
         onButtonClick={isDesignPopup ? undefined : handleHeaderButtonClick}
       />
+
+      {/* DESIGN SETTINGS */}
       {designItems.length > 0 && !isDesignPopup && (
         <div className="designSettings">
           <div className="designControlsContainer">
@@ -138,38 +149,35 @@ function DesignPage() {
           </div>
         </div>
       )}
-      <div className="designContent">
-        {isDesignPopup && (
-          <LeftBarPopup
-            designLocations={desingLocationsUrls}
-            onApply={handleApplyOrUpdateDesign}
-            onClickClose={() => setIsDesignPopup(false)}
-          />
-        )}
 
-        {!isDesignPopup &&
-          (selectedButton === "first" ? designConfig : bestDesignConfig).map(
-            (design, index) => {
-              return (
-                <div
-                  key={index}
-                  className="designItem"
-                  onClick={() =>
-                    selectedButton === "first"
-                      ? handleClickDesign(design)
-                      : handleClickBestDesign()
-                  }
-                >
-                  <img
-                    src={design.pngUri}
-                    alt="design"
-                    className="designImage"
-                  />
-                </div>
-              );
-            }
+      {isDesignPopup && (
+        <LeftBarPopup
+          assets={desingLocationsUrls}
+          onApply={handleApplyOrUpdateDesign}
+          handleClickBack={() => setIsDesignPopup(false)}
+          type={"design"}
+        />
+      )}
+
+      {!isDesignPopup && (
+        <div className="designContent">
+          {(selectedButton === "first" ? designConfig : bestDesignConfig).map(
+            (design, index) => (
+              <div
+                key={index}
+                className="designItem"
+                onClick={() =>
+                  selectedButton === "first"
+                    ? handleClickDesign(design)
+                    : handleClickBestDesign(design)
+                }
+              >
+                <img src={design.pngUri} alt="design" className="designImage" />
+              </div>
+            )
           )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

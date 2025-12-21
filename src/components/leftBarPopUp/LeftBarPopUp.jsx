@@ -3,29 +3,45 @@ import "./leftBarPopup.css";
 import { SubHeader } from "../subHeader/SubHeader";
 
 export default function LeftBarPopup({
-  designLocations,
+  assets,
   onApply,
-  onClickClose,
+  handleClickBack,
+  type,
 }) {
   const [selected, setSelected] = useState([]);
 
   const handleSelect = (index) => {
+    if (type !== "design") {
+      // ❗ sadece tek seçim
+      setSelected([index]);
+      return;
+    }
+
+    // design ise multi-select
     setSelected((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
 
   const handleApplyClick = () => {
-    const selectedLocations = selected.map((i) => designLocations[i].name);
-    onApply(selectedLocations);
+    if (type === "design") {
+      const selectedLocations = selected.map((i) => assets[i].name);
+      onApply(selectedLocations);
+      return;
+    }
+    const selectedLocation = assets[selected];
+    onApply("add", selectedLocation.x, selectedLocation.y);
   };
 
   return (
     <div className="leftbarPopup">
-      <SubHeader onClick={onClickClose} title={"Please Choose Part"} />
+      <SubHeader
+        handleClickBack={handleClickBack}
+        title={`Please Choose ${type === "design" ? "Parts" : "Location"}`}
+      />
 
       <div className="popupGrid">
-        {designLocations.map((item, i) => (
+        {assets.map((item, i) => (
           <div
             key={i}
             className={`popupItem ${selected.includes(i) ? "active" : ""}`}

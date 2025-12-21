@@ -4,36 +4,152 @@ import configuratorStore from "../../../store/configuratorStore";
 import { ButtonForSticker } from "../../../components/buttons/Buttons";
 import configStore from "../../../store/configStore";
 import Header from "../../../components/header/Header";
+import { startTransition, useState } from "react";
+import { ItemSettings } from "../../../components/itemSettings/ItemSettings";
+import { ColorPicker } from "../../../components/colorPicker/ColorPicker";
 
 function StickerPage() {
+  //TODO -- sticker name could be a must in state otherwise layer order might not gonna work
   console.log("StickerPage");
-  const stickerItems = configuratorStore.getState().getItemsByType("sticker");
-  console.log("Sticker items on model:", stickerItems);
-
   const stickerAssets = configStore.getState().getAllStickers();
-  console.log("Sticker assets from configStore:", stickerAssets);
 
-  const handleOnClick = (itemId) => {
-    console.log("Clicked sticker item with id:", itemId);
+  const getMaxId = configuratorStore((state) => state.getMaxId);
+  const updateItem = configuratorStore((state) => state.updateItem);
+  const itemsOnModel = configuratorStore((state) => state.itemsOnModel);
+  const stickerItems = itemsOnModel.filter((item) => item.type === "sticker");
+  const addItem = configuratorStore((state) => state.addItem);
+  const removeItem = configuratorStore((state) => state.removeItem);
+
+  console.log("sticker items on model:", stickerItems);
+
+  const [selectedStickerId, setSelectedStickerId] = useState(null);
+  const [selectedPage, setSelectedPage] = useState("sticker");
+
+  const selectedItem = stickerItems.find(
+    (item) => item.id === selectedStickerId
+  );
+
+  const handleClickBack = (page) => {
+    setSelectedPage(page);
+  };
+
+  const handleOntoggleSticker = (id) => {
+    console.log("ontogglesticker", id);
+
+    const item = stickerItems.find((i) => i.id === id);
+    if (!item) return;
+    console.log("stickeritem", item);
+    startTransition(() => {
+      updateItem(id, { isActive: !item.isActive });
+    });
+  };
+
+  const handleApplyorUpdateSticker = (key, firstValue, secondValue) => {
+    console.log("asdfasdf", key, firstValue, secondValue);
+    startTransition(() => {
+      if (!selectedStickerId) {
+        const newId = (getMaxId() + 1).toString();
+        addItem({
+          id: newId,
+          type: "sticker",
+          textureUri: firstValue,
+          scale: 1,
+          rotation: 0,
+          x: firstValue,
+          y: secondValue,
+          opacity: 1,
+          firstColor: "#000000",
+          secondColor: "#000000",
+          isGradient: false,
+          gradientRotation: 0,
+          gradientOffset: 0,
+          gradientTransition: 0,
+          layerIndex: newId,
+          isActive: true,
+        });
+        //TODO -- here must be model turner function model needs to turn to correct location
+        return;
+      }
+
+      if (key === "delete") {
+        removeItem(selectedStickerId);
+        setSelectedStickerId(null);
+        setSelectedPage("sticker");
+        return;
+      }
+
+      if (key === "gradient") {
+        updateItem(selectedStickerId, {
+          firstColor: firstValue,
+          secondColor: secondValue,
+          isGradient: true,
+          isActive: true,
+        });
+        return;
+      }
+
+      if (key === "color") {
+        updateItem(selectedStickerId, {
+          firstColor: firstValue,
+          isGradient: false,
+          isActive: true,
+        });
+        return;
+      }
+      console;
+      updateItem(selectedStickerId, { [key]: firstValue, isActive: true });
+    });
   };
 
   return (
     <div className="stickerPageContainer">
       {" "}
       <Header title={"Sticker"} subtitle={"Sticker"} />
-      <AssetDrawer assets={stickerAssets} selectedItems={stickerItems} />
+      {selectedPage === "sticker" && (
+        <AssetDrawer
+          assets={stickerAssets}
+          selectedItems={stickerItems}
+          onTextureApply={handleApplyorUpdateSticker}
+        />
+      )}
       <hr className="stickerHr" />
-      <div className="stickerScrollArea">
-        {stickerItems.length > 0 &&
-          stickerItems.map((item, i) => (
+      {selectedPage === "sticker" && (
+        <div className="stickerScrollArea">
+          {stickerItems.map((item, i) => (
             <ButtonForSticker
               key={item.id}
               title={`Sticker ${i + 1}`}
-              onClick={handleOnClick}
               stickerUri={item.textureUri}
+              onClick={() => {
+                setSelectedStickerId(item.id);
+                setSelectedPage("sticker settings");
+              }}
+              isActive={item.isActive}
+              onToggle={() => handleOntoggleSticker(item.id)}
             />
           ))}
-      </div>
+        </div>
+      )}
+      {selectedPage === "sticker settings" && (
+        <ItemSettings
+          type={"sticker"}
+          handleClickBack={() => handleClickBack("sticker")}
+          handleSettingsApply={handleApplyorUpdateSticker}
+          title={"sticker"}
+          item={selectedItem}
+          handleSelectedPage={setSelectedPage}
+        />
+      )}
+      {(selectedPage === "sticker color" ||
+        selectedPage === "sticker gradient") && (
+        <ColorPicker
+          handleColorApply={handleApplyorUpdateSticker}
+          handleClickBack={() => handleClickBack("sticker settings")}
+          firstColor={selectedItem?.firstColor}
+          secondColor={selectedItem?.secondColor}
+          type={selectedPage === "sticker gradient" ? "gradient" : "color"}
+        />
+      )}
     </div>
   );
 }

@@ -9,26 +9,41 @@ const configuratorStore = create((set, get) => ({
       firstColor: "#c52525ff",
       secondColor: "#000000",
       isGradient: false,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     RightSleeve: {
       firstColor: "#312692ff",
       secondColor: "#ff0000ff",
       isGradient: true,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     Front: {
       firstColor: "#4ec928ff",
       secondColor: "#000000",
       isGradient: false,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     Back: {
       firstColor: "#cd19d3ff",
       secondColor: "#000000",
       isGradient: false,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     Collar: {
       firstColor: "#cbec0fff",
       secondColor: "#000000",
       isGradient: false,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
   },
 
@@ -84,6 +99,9 @@ const configuratorStore = create((set, get) => ({
       firstColor: "#ff0000",
       secondColor: "#0000ff",
       isGradient: false,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "3",
@@ -99,6 +117,9 @@ const configuratorStore = create((set, get) => ({
       firstColor: "#ff0000",
       secondColor: "#0000ff",
       isGradient: true,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "4",
@@ -110,6 +131,9 @@ const configuratorStore = create((set, get) => ({
       rotation: 0,
       layerIndex: 0,
       isActive: true,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "5",
@@ -121,7 +145,10 @@ const configuratorStore = create((set, get) => ({
       rotation: 0,
       layerIndex: 0,
       isActive: true,
-      stickerName: "Sticker 1",
+      name: "Sticker 1",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "6",
@@ -133,7 +160,10 @@ const configuratorStore = create((set, get) => ({
       rotation: 0,
       layerIndex: 0,
       isActive: true,
-      stickerName: "Sticker 2",
+      name: "Sticker 2",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
 
     {
@@ -148,6 +178,9 @@ const configuratorStore = create((set, get) => ({
       isActive: true,
       appliedPart: ["LeftSleeve", "RightSleeve"],
       logoName: "Logo 1",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
 
     {
@@ -162,6 +195,9 @@ const configuratorStore = create((set, get) => ({
       isActive: true,
       appliedPart: ["LeftSleeve", "RightSleeve"],
       logoName: "Logo 2",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "9",
@@ -175,6 +211,9 @@ const configuratorStore = create((set, get) => ({
       isActive: true,
       appliedPart: ["LeftSleeve", "RightSleeve"],
       logoName: "Logo 3",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
 
     {
@@ -187,6 +226,9 @@ const configuratorStore = create((set, get) => ({
       rotation: 0,
       layerIndex: 0,
       isActive: true,
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "14",
@@ -198,7 +240,10 @@ const configuratorStore = create((set, get) => ({
       rotation: 0,
       layerIndex: 0,
       isActive: true,
-      stickerName: "Sticker 1",
+      name: "Sticker 1",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "15",
@@ -210,7 +255,10 @@ const configuratorStore = create((set, get) => ({
       rotation: 0,
       layerIndex: 0,
       isActive: true,
-      stickerName: "Sticker 2",
+      name: "Sticker 2",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
 
     {
@@ -225,6 +273,9 @@ const configuratorStore = create((set, get) => ({
       isActive: true,
       appliedPart: ["LeftSleeve", "RightSleeve"],
       logoName: "Logo 1",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
 
     {
@@ -239,6 +290,9 @@ const configuratorStore = create((set, get) => ({
       isActive: true,
       appliedPart: ["LeftSleeve", "RightSleeve"],
       logoName: "Logo 2",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
     {
       id: "18",
@@ -252,6 +306,9 @@ const configuratorStore = create((set, get) => ({
       isActive: true,
       appliedPart: ["LeftSleeve", "RightSleeve"],
       logoName: "Logo 3",
+      gradientRotation: 0,
+      gradientOffset: 0,
+      gradientTransition: 0,
     },
   ],
 

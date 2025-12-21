@@ -1,21 +1,20 @@
-.popupTopContainer {
+.subHeaderContainer {
   display: flex;
   width: 100%;
   align-items: center;
   color: var(--text-color);
 }
 
-.popupTitle {
+.subHeaderTitle {
   margin: 10px;
   font-size: 20px;
   font-weight: 600;
   margin-left: 48px;
 }
 
-.closeBtn {
+.subHeadercloseBtn {
   font-weight: 600;
   cursor: pointer;
-  color: var(--text-color);
   background: var(--button-bg-color-active);
   border: 1px solid var(--border-color);
   padding: 3px 8px;

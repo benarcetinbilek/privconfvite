@@ -18,3 +18,7 @@ toast.success("Design applied successfully!");
           //transparency length selector button
         </div>
 guzel bir dizayn yap buraya delete butonu solda olsun digerleri sag tarafta olsun alt alta
+
+
+logo icin eger custom design yapmak istiyolarsa uvmap indirilebilsin ve bir buton olsun custom dizayn diye 
+eger full uvmap dizayn yapicaklarsa butun modele tekte dizayn yapistirilabilsin

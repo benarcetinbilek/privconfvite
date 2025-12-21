@@ -3,11 +3,11 @@ import "./subHeader.css";
 
 export const SubHeader = ({ handleClickBack, title }) => {
   return (
-    <div className="popupTopContainer">
-      <button className="closeBtn" onClick={handleClickBack}>
+    <div className="subHeaderContainer">
+      <button className="subHeadercloseBtn" onClick={handleClickBack}>
         <BaselineKeyboardArrowLeft /> back
       </button>
-      <h3 className="popupTitle">{title}</h3>
+      <h3 className="subHeaderTitle">{title}</h3>
     </div>
   );
 };

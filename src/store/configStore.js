@@ -65,6 +65,73 @@ const configStore = create((set, get) => ({
   ],
   setDesingLocationsUrls: (val) => set({ desingLocations: val }),
 
+  commonLocationsUrls: [
+    {
+      id: "location-1",
+      pngUri: "/positionsForText/Position_1.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Front",
+    },
+    {
+      id: "location-2",
+      pngUri: "/positionsForText/Position_2.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Back",
+    },
+    {
+      id: "location-3",
+      pngUri: "/positionsForText/Position_3.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Left",
+    },
+    {
+      id: "location-4",
+      pngUri: "/positionsForText/Position_4.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Right",
+    },
+    {
+      id: "location-5",
+      pngUri: "/positionsForText/Position_5.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Right",
+    },
+    {
+      id: "location-6",
+      pngUri: "/positionsForText/Position_6.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Right",
+    },
+    {
+      id: "location-7",
+      pngUri: "/positionsForText/Position_7.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Right",
+    },
+    {
+      id: "location-8",
+      pngUri: "/positionsForText/Position_8.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Right",
+    },
+    {
+      id: "location-9",
+      pngUri: "/positionsForText/Position_9.png",
+      x: 0.5,
+      y: 0.5,
+      name: "Right",
+    },
+  ],
+  setCommonLocationsUrls: (val) => set({ desingLocations: val }),
+
   //use this inside color canvas and uvmap export to color a constant part
   constantColoredPartConfig: { LeftPocket: "Front" },
   setConstantColoredPartConfig: (val) =>

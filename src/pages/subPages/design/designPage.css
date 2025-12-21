@@ -15,6 +15,7 @@
   overflow-y: auto;
   width: 100%;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .designItem {

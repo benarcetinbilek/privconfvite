@@ -27,8 +27,8 @@ function ColorPage() {
     setSelectedPart(null);
   };
 
-  const handleColorApply = (firstColor) => {
-    console.log("firstcolor", firstColor);
+  const handleColorApply = (key, firstColor) => {
+    console.log("firstcolor", key, firstColor);
     updateColor(selectedPart, { firstColor, isGradient: false });
   };
 
@@ -55,6 +55,7 @@ function ColorPage() {
           handleColorApply={handleColorApply}
           handleClickBack={handleClickBack}
           firstColor={colorsForParts[selectedPart].firstColor}
+          type={"color"}
         />
       )}
     </div>
