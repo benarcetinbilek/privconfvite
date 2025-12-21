@@ -22,3 +22,6 @@ guzel bir dizayn yap buraya delete butonu solda olsun digerleri sag tarafta olsu
 
 logo icin eger custom design yapmak istiyolarsa uvmap indirilebilsin ve bir buton olsun custom dizayn diye 
 eger full uvmap dizayn yapicaklarsa butun modele tekte dizayn yapistirilabilsin
+
+
+centerize fonksiyonu icin text,sticker,logo handleupdateoradd icinde fonksiyon yaz 
