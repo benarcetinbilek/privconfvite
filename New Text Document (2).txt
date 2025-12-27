@@ -25,3 +25,9 @@ eger full uvmap dizayn yapicaklarsa butun modele tekte dizayn yapistirilabilsin
 
 
 centerize fonksiyonu icin text,sticker,logo handleupdateoradd icinde fonksiyon yaz 
+
+custom sayfa yapilabilir leftbar icin icine surukle birak mantigi ile input buton falan konulabilir ama bu enterprise tarafindada olabilir
+
+yeni bir sayfa eklenebilir buda texture degistirmek icin parcalarin ayri ayri configuratorde bulunan texturelari degisebilir
+
+modellerın ustune sadece prıntable area eklenebılır

@@ -10,6 +10,7 @@ import { ModelViewer } from "../../utils/modelViewer/ModelViewer";
 
 function CanvasForModel() {
   console.log("CanvasForModel");
+  //TODO-- check antialias and dpr what are those maybe mobile friendly
   return (
     <div className="canvasContainer">
       {" "}
@@ -21,7 +22,8 @@ function CanvasForModel() {
           near: 0.1, // Adjusted near clipping plane
           far: 10000, // Adjusted far clipping plane
         }}
-        gl={{ preserveDrawingBuffer: true }}
+        gl={{ preserveDrawingBuffer: true, antialias: false }}
+        dpr={[1, 1.5]}
       >
         <ModelViewer />
         <OrbitControls
