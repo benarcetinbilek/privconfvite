@@ -1,6 +1,9 @@
 import * as THREE from "three";
 import { drawDesign } from "../textureCanvasses/canvasForDesign";
 import { drawPattern } from "../textureCanvasses/canvasForPattern";
+import { drawText } from "../textureCanvasses/canvasForText";
+import { drawSticker } from "../textureCanvasses/canvasForSticker";
+import { drawLogo } from "../textureCanvasses/canvasForLogo";
 
 export const createCanvasForTextures = (size = 1024) => {
   const canvas = document.createElement("canvas");
@@ -51,13 +54,11 @@ export const drawTexturesToCanvas = async (
         break;
 
       case "logo":
-        // Handle logo drawing
-        // drawLogo(ctx, item, uvConfig);
+        await drawLogo(ctx, size, uvConfig, item);
         break;
 
       case "sticker":
-        // Handle sticker drawing
-        // drawSticker(ctx, item, uvConfig);
+        await drawSticker(ctx, size, uvConfig, item);
         break;
 
       case "design":
@@ -66,8 +67,7 @@ export const drawTexturesToCanvas = async (
         break;
 
       case "text":
-        // Handle text drawing
-        // drawText(ctx, item, uvConfig);
+        await drawText(ctx, size, uvConfig, item);
         break;
 
       default:

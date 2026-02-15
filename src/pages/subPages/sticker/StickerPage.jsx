@@ -30,7 +30,7 @@ function StickerPage() {
   console.log("selectedtexture", selectedTextureUri);
 
   const selectedItem = stickerItems.find(
-    (item) => item.id === selectedStickerId
+    (item) => item.id === selectedStickerId,
   );
 
   const handleClickBack = (page) => {
@@ -59,8 +59,10 @@ function StickerPage() {
           textureUri: selectedTextureUri,
           scale: 1,
           rotation: 0,
-          x: firstValue,
-          y: secondValue,
+          // x: firstValue,
+          x: 0.43,
+          // y: secondValue,
+          y: 0.15,
           opacity: 1,
           firstColor: "#000000",
           secondColor: "#000000",

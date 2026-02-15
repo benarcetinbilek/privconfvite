@@ -98,6 +98,34 @@ export const ItemSettings = ({
             />
           </div>
 
+          {/* CURVE */}
+          {type === "text" && (
+            <div className="setting">
+              <div className="settingtitle">Curve:</div>
+              <button
+                className="settingColorButton"
+                onClick={() => {
+                  handleSettingsApply("backgroundColor", null);
+                  handleSettingsApply("isCurved", !item?.isCurved);
+                }}
+              >
+                {item?.isCurved ? "Yes" : "No"}
+              </button>
+
+              <input
+                className="settingInput"
+                type="range"
+                min="0.1"
+                max="1"
+                step="0.01"
+                value={item?.curvedAngle || 1}
+                onChange={(e) =>
+                  handleSettingsApply("curvedAngle", Number(e.target.value))
+                }
+              />
+            </div>
+          )}
+
           {/* STICKER POSITION (X) */}
           {(type === "sticker" || type === "logo") && (
             <div className="setting">
@@ -223,7 +251,7 @@ export const ItemSettings = ({
           )}
 
           {/* BACKGROUND COLOR*/}
-          {type === "text" && (
+          {type === "text" && !item?.isCurved && (
             <div className="setting">
               <div className="settingtitle">Background Color:</div>
               <div
