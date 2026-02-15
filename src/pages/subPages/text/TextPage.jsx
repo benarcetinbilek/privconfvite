@@ -33,12 +33,12 @@ function TextPage() {
     selectedPage === "text color"
       ? "color"
       : selectedPage === "text gradient"
-      ? "gradient"
-      : selectedPage === "text color background"
-      ? "backgroundColor"
-      : selectedPage === "text color outline"
-      ? "outlineColor"
-      : null;
+        ? "gradient"
+        : selectedPage === "text color background"
+          ? "backgroundColor"
+          : selectedPage === "text color outline"
+            ? "outlineColor"
+            : null;
 
   console.log("selecctedpage", selectedPage);
   console.log("colortype", colorType);
@@ -80,6 +80,8 @@ function TextPage() {
           gradientRotation: 0,
           gradientOffset: 0,
           gradientTransition: 0,
+          isCurved: false,
+          curvedAngle: 0,
           layerIndex: newId,
           isActive: true,
           isLocked: false,

@@ -1,4 +1,3 @@
-// canvasForColor.js
 import * as THREE from "three";
 
 const uvBoxToPixels = (uvMin, uvMax, size) => {
@@ -22,17 +21,21 @@ export const createColorCanvasTexture = (size = 512) => {
 
   return { canvas, ctx, texture, size };
 };
+
 let drawCount = 0;
+
 export const drawColorsToCanvas = ({ ctx, size }, uvConfig, colorsForParts) => {
   ctx.clearRect(0, 0, size, size);
+
   drawCount++;
-  console.log("drawColorsToCanvas count:", drawCount);
+  console.log("draw Colors To Canvas count:", drawCount);
+
   Object.entries(uvConfig).forEach(([part, [uvMin, uvMax]]) => {
     const state = colorsForParts?.[part];
     if (!state) return;
 
     const { xMin, yMin, w, h } = uvBoxToPixels(uvMin, uvMax, size);
-
+    // console.log("xmin", xMin, "ymin", yMin, "w", w);
     const {
       firstColor,
       secondColor,
@@ -43,7 +46,7 @@ export const drawColorsToCanvas = ({ ctx, size }, uvConfig, colorsForParts) => {
     } = state;
 
     if (isGradient && secondColor) {
-      const rad = (gradientRotation * Math.PI) / 180;
+      const rad = gradientRotation;
 
       const cx = xMin + w / 2 + Math.cos(rad) * w * 0.5 * gradientOffset;
       const cy = yMin + h / 2 + Math.sin(rad) * h * 0.5 * gradientOffset;

@@ -8,8 +8,8 @@ function AssetDrawer({
   onTextureApply,
 }) {
   //TODO -- lazyloading nedir bak react-window bak cdn cache bak
-  console.log("selecteditems", selectedItems);
-  console.log("ASSETS", assets);
+  // console.log("selecteditems", selectedItems);
+  // console.log("ASSETS", assets);
   return (
     <div className="assetDrawerContainer">
       <div className="assetsGrid">
@@ -18,7 +18,7 @@ function AssetDrawer({
             ? selectedItems.some((i) => i.textureUri === asset.texture)
             : selectedTextureUri === asset.texture;
 
-          console.log(isSelected);
+          // console.log(isSelected);
 
           return (
             <div

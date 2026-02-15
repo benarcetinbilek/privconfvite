@@ -56,11 +56,15 @@ const configStore = create((set, get) => ({
       name: "Front",
     },
     { id: "location-2", pngUri: "/positionsForDesign/back.png", name: "Back" },
-    { id: "location-3", pngUri: "/positionsForDesign/left.png", name: "Left" },
+    {
+      id: "location-3",
+      pngUri: "/positionsForDesign/left.png",
+      name: "LeftSleeve",
+    },
     {
       id: "location-4",
       pngUri: "/positionsForDesign/right.png",
-      name: "Right",
+      name: "RightSleeve",
     },
   ],
   setDesingLocationsUrls: (val) => set({ desingLocations: val }),
@@ -286,6 +290,7 @@ const configStore = create((set, get) => ({
   setPatternUrls: (val) => set({ patternUrls: val }),
 
   patternPartConfig: ["LeftSleeve", "RightSleeve", "Front", "Back", "Collar"],
+
   setPatternPartConfig: (val) => set({ patternPartConfig: val }),
 
   textConfig: {},

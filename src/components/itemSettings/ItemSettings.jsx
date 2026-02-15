@@ -80,6 +80,24 @@ export const ItemSettings = ({
             />
           </div>
 
+          {/* ROTATION */}
+          <div className="setting">
+            <div className="settingtitle">Opacity:</div>
+            <div className="settingValue">{item?.opacity || 100}%</div>
+
+            <input
+              className="settingInput"
+              type="range"
+              min="0.1"
+              max="1"
+              step="0.01"
+              value={item?.opacity || 1}
+              onChange={(e) =>
+                handleSettingsApply("opacity", Number(e.target.value))
+              }
+            />
+          </div>
+
           {/* STICKER POSITION (X) */}
           {(type === "sticker" || type === "logo") && (
             <div className="setting">
@@ -234,14 +252,14 @@ export const ItemSettings = ({
               <input
                 className="settingInput"
                 type="range"
-                min="0.2"
-                max="2"
+                min="-3.1415"
+                max="3.1415"
                 step="0.01"
                 value={item?.gradientRotation}
                 onChange={(e) =>
                   handleSettingsApply(
                     "gradientRotation",
-                    Number(e.target.value)
+                    Number(e.target.value),
                   )
                 }
               />
@@ -257,7 +275,7 @@ export const ItemSettings = ({
               <input
                 className="settingInput"
                 type="range"
-                min="0.2"
+                min="-2"
                 max="2"
                 step="0.01"
                 value={item?.gradientOffset}
@@ -286,7 +304,7 @@ export const ItemSettings = ({
                 onChange={(e) =>
                   handleSettingsApply(
                     "gradientTransition",
-                    Number(e.target.value)
+                    Number(e.target.value),
                   )
                 }
               />
@@ -320,7 +338,7 @@ export const ItemSettings = ({
                   onClick={() =>
                     handleSettingsApply(
                       "isLocked",
-                      item.isLocked ? false : true
+                      item.isLocked ? false : true,
                     )
                   }
                 >

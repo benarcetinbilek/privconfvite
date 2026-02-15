@@ -10,16 +10,21 @@ import configuratorStore from "../../store/configuratorStore";
 import {
   createColorCanvasTexture,
   drawColorsToCanvas,
-} from "../canvasses/canvasForColor";
+} from "../mainCanvasses/canvasForColor";
 import { useFrame } from "@react-three/fiber";
+import {
+  createCanvasForTextures,
+  drawTexturesToCanvas,
+} from "../mainCanvasses/canvasForTextures";
 
 export function ModelViewer() {
   const { setGeometry, uvConfig } = configStore();
-  const { colorsForParts } = configuratorStore();
+  const { colorsForParts, itemsOnModel } = configuratorStore();
 
   const [startTime] = useState(() => performance.now());
 
   const { nodes } = useGLTF("/model.glb");
+
   const normalMapTexture = useLoader(TextureLoader, "/normalMap.png");
   normalMapTexture.flipY = false;
 
@@ -34,7 +39,8 @@ export function ModelViewer() {
   // uvConfig veya colorsForParts değişince canvas'ı redraw et
   useEffect(() => {
     if (!uvConfig || !colorsForParts) return;
-    console.log("useefect modelviewer colorpack");
+    console.log("useeffect modelviewer colorpack");
+
     const t0 = performance.now();
     drawColorsToCanvas(colorPack, uvConfig, colorsForParts);
     const t1 = performance.now();
@@ -47,12 +53,40 @@ export function ModelViewer() {
     }
   }, [uvConfig, colorsForParts, colorPack]);
 
+  const texturePack = useMemo(() => createCanvasForTextures(), []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      if (!uvConfig) return;
+      const t0 = performance.now();
+      await drawTexturesToCanvas(texturePack, uvConfig, itemsOnModel);
+      const t1 = performance.now();
+      console.log(`[TEXTURE] draw took ${(t1 - t0).toFixed(2)} ms`);
+      if (cancelled) return;
+
+      texturePack.texture.needsUpdate = true;
+
+      if (materialRef.current) {
+        materialRef.current.uniforms.canvasToTexture.value =
+          texturePack.texture;
+        materialRef.current.uniformsNeedUpdate = true;
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [uvConfig, itemsOnModel, texturePack]);
+
+  //LOGS
   useEffect(() => {
     const endTime = performance.now();
     console.log(
       "ModelViewer loaded in",
       ((endTime - startTime) / 1000).toFixed(2),
-      "seconds"
+      "seconds",
     );
     setGeometry(nodes.Scene.children[0].geometry);
   }, [nodes, setGeometry, startTime]);
@@ -72,7 +106,9 @@ export function ModelViewer() {
       console.log(`avg frame ${avgMs.toFixed(2)} ms | ~${fps.toFixed(1)} fps`);
     }
   });
+
   const { gl } = useThree();
+
   useEffect(() => {
     const id = setInterval(() => {
       const info = gl.info;
@@ -84,24 +120,30 @@ export function ModelViewer() {
         "textures",
         info.memory.textures,
         "geometries",
-        info.memory.geometries
+        info.memory.geometries,
       );
     }, 2000);
 
     return () => clearInterval(id);
   }, [gl]);
 
+  const uniforms = useMemo(
+    () => ({
+      blendFactor: { value: 1.0 },
+      lightPosition: { value: new Vector3(2.0, 2.0, 2.0) },
+      normalMap: { value: normalMapTexture },
+      canvasToColor: { value: colorPack.texture },
+      canvasToTexture: { value: texturePack.texture },
+    }),
+    [normalMapTexture, colorPack.texture, texturePack.texture],
+  );
+
   return (
     <Suspense fallback={<p>wait please</p>}>
       <mesh geometry={nodes.Scene.children[0].geometry} position={[0, -1.3, 0]}>
         <shaderMaterial
           ref={materialRef}
-          uniforms={{
-            blendFactor: { value: 1.0 },
-            lightPosition: { value: new Vector3(2.0, 2.0, 2.0) },
-            normalMap: { value: normalMapTexture },
-            canvasToColor: { value: colorPack.texture },
-          }}
+          uniforms={uniforms}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
         />

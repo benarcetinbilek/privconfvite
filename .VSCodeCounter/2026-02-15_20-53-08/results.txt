@@ -1,0 +1,156 @@
+Date : 2026-02-15 20:53:08
+Directory : c:\Users\bnrdevelopment\Desktop\asd\src
+Total : 84 files,  5257 codes, 594 comments, 804 blanks, all 6655 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         30 |      2,823 |        237 |        368 |      3,428 |
+| JavaScript     |         24 |      1,346 |        307 |        240 |      1,893 |
+| PostCSS        |         27 |      1,067 |         50 |        194 |      1,311 |
+| JSON           |          2 |         20 |          0 |          2 |         22 |
+| XML            |          1 |          1 |          0 |          0 |          1 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                           | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                              |         84 |      5,257 |        594 |        804 |      6,655 |
+| . (Files)                                                                                      |          4 |         43 |          4 |         12 |         59 |
+| assets                                                                                         |          3 |        437 |         22 |         13 |        472 |
+| components                                                                                     |         33 |      2,045 |        106 |        309 |      2,460 |
+| components\assetDrawer                                                                         |          2 |         76 |          5 |         12 |         93 |
+| components\buttons                                                                             |          2 |        305 |         26 |         48 |        379 |
+| components\canvas                                                                              |          2 |         39 |          7 |          6 |         52 |
+| components\colorPicker                                                                         |          2 |        387 |         19 |         47 |        453 |
+| components\fontChange                                                                          |          2 |          4 |          0 |          3 |          7 |
+| components\footer                                                                              |          2 |         83 |          1 |          9 |         93 |
+| components\header                                                                              |          2 |         76 |          0 |         10 |         86 |
+| components\itemSettings                                                                        |          2 |        453 |         26 |         53 |        532 |
+| components\leftBar                                                                             |          2 |        175 |          0 |         14 |        189 |
+| components\leftBarPopUp                                                                        |          2 |        153 |         18 |         39 |        210 |
+| components\loadingOverlay                                                                      |          2 |         73 |          0 |         12 |         85 |
+| components\popup                                                                               |          6 |         34 |          0 |         15 |         49 |
+| components\popup\infoPopup                                                                     |          2 |         15 |          0 |          6 |         21 |
+| components\popup\shareDesignPopup                                                              |          2 |         13 |          0 |          4 |         17 |
+| components\popup\tutorialPopUp                                                                 |          2 |          6 |          0 |          5 |         11 |
+| components\sortableItem                                                                        |          1 |         17 |          0 |          4 |         21 |
+| components\subHeader                                                                           |          2 |         36 |          0 |          5 |         41 |
+| components\uploadBox                                                                           |          2 |        134 |          4 |         32 |        170 |
+| helper                                                                                         |          4 |         59 |          5 |         16 |         80 |
+| i18n                                                                                           |          3 |         38 |          1 |          6 |         45 |
+| pages                                                                                          |         18 |      1,305 |         37 |        192 |      1,534 |
+| pages\home                                                                                     |          2 |         60 |         15 |         14 |         89 |
+| pages\subPages                                                                                 |         16 |      1,245 |         22 |        178 |      1,445 |
+| pages\subPages\color                                                                           |          2 |         60 |          0 |         11 |         71 |
+| pages\subPages\design                                                                          |          2 |        238 |         11 |         30 |        279 |
+| pages\subPages\gradient                                                                        |          2 |         81 |          1 |         11 |         93 |
+| pages\subPages\layerOrder                                                                      |          2 |        133 |          3 |         26 |        162 |
+| pages\subPages\logo                                                                            |          2 |        180 |          1 |         25 |        206 |
+| pages\subPages\pattern                                                                         |          2 |        144 |          0 |         21 |        165 |
+| pages\subPages\sticker                                                                         |          2 |        185 |          3 |         22 |        210 |
+| pages\subPages\text                                                                            |          2 |        224 |          3 |         32 |        259 |
+| shaders                                                                                        |          2 |         67 |          0 |          2 |         69 |
+| store                                                                                          |          3 |        646 |         57 |         50 |        753 |
+| utils                                                                                          |         14 |        617 |        362 |        204 |      1,183 |
+| utils\calculations                                                                             |          4 |          0 |          0 |          4 |          4 |
+| utils\controls                                                                                 |          3 |          0 |          0 |          3 |          3 |
+| utils\exportUvMap                                                                              |          1 |         42 |          8 |         14 |         64 |
+| utils\mainCanvasses                                                                            |          2 |        102 |         24 |         35 |        161 |
+| utils\modelViewer                                                                              |          1 |         83 |        118 |         37 |        238 |
+| utils\presetColors                                                                             |          1 |        180 |          0 |          2 |        182 |
+| utils\textureCanvasses                                                                         |          2 |        210 |        212 |        109 |        531 |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                       | language       | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\bnrdevelopment\Desktop\asd\src\App.css                                                | PostCSS        |         23 |          0 |          4 |         27 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\App.jsx                                                | JavaScript JSX |         15 |          4 |          5 |         24 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\assets\fakeUvMapping.js                                | JavaScript     |         22 |          0 |          1 |         23 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\assets\react.svg                                       | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\assets\svgs.jsx                                        | JavaScript JSX |        414 |         22 |         12 |        448 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\assetDrawer\AssetDrawer.jsx                 | JavaScript JSX |         30 |          4 |          5 |         39 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\assetDrawer\assetDrawer.css                 | PostCSS        |         46 |          1 |          7 |         54 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\buttons\Buttons.jsx                         | JavaScript JSX |        161 |         25 |         25 |        211 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\buttons\buttons.css                         | PostCSS        |        144 |          1 |         23 |        168 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\canvas\CanvasForModel.jsx                   | JavaScript JSX |         36 |          7 |          5 |         48 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\canvas\canvasForModel.css                   | PostCSS        |          3 |          0 |          1 |          4 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\colorPicker\ColorPicker.jsx                 | JavaScript JSX |        220 |         12 |         19 |        251 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\colorPicker\colorPicker.css                 | PostCSS        |        167 |          7 |         28 |        202 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\fontChange\FontChange.jsx                   | JavaScript JSX |          4 |          0 |          2 |          6 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\fontChange\fontChange.css                   | PostCSS        |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\footer\Footer.jsx                           | JavaScript JSX |         54 |          1 |          5 |         60 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\footer\footer.css                           | PostCSS        |         29 |          0 |          4 |         33 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\header\Header.jsx                           | JavaScript JSX |         39 |          0 |          3 |         42 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\header\header.css                           | PostCSS        |         37 |          0 |          7 |         44 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\itemSettings\ItemSettings.jsx               | JavaScript JSX |        314 |         19 |         34 |        367 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\itemSettings\itemSettings.css               | PostCSS        |        139 |          7 |         19 |        165 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBarPopUp\LeftBarPopUp.jsx               | JavaScript JSX |         56 |          2 |          8 |         66 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBarPopUp\leftBarPopUp.css               | PostCSS        |         97 |         16 |         31 |        144 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBar\LeftBar.jsx                         | JavaScript JSX |        124 |          0 |          7 |        131 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBar\leftBar.css                         | PostCSS        |         51 |          0 |          7 |         58 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\loadingOverlay\LoadingOverlay.jsx           | JavaScript JSX |         17 |          0 |          4 |         21 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\loadingOverlay\loadingOverlay.css           | PostCSS        |         56 |          0 |          8 |         64 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\infoPopup\InfoPopup.jsx               | JavaScript JSX |         15 |          0 |          5 |         20 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\infoPopup\infoPopup.css               | PostCSS        |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\shareDesignPopup\ShareDesignPopUp.jsx | JavaScript JSX |         13 |          0 |          3 |         16 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\shareDesignPopup\shareDesignPopUp.css | PostCSS        |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\tutorialPopUp\TutorialPopUp.jsx       | JavaScript JSX |          6 |          0 |          4 |         10 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\tutorialPopUp\tutorialPopUp.css       | PostCSS        |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\sortableItem\SortableItem.jsx               | JavaScript JSX |         17 |          0 |          4 |         21 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\subHeader\SubHeader.jsx                     | JavaScript JSX |         12 |          0 |          2 |         14 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\subHeader\subHeader.css                     | PostCSS        |         24 |          0 |          3 |         27 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\uploadBox\UploadBox.jsx                     | JavaScript JSX |         95 |          4 |         25 |        124 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\components\uploadBox\uploadBox.css                     | PostCSS        |         39 |          0 |          7 |         46 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\helper\assetSvgCache.js                                | JavaScript     |         38 |          5 |         12 |         55 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\helper\getItems.js                                     | JavaScript     |          6 |          0 |          2 |          8 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\helper\loadImage.js                                    | JavaScript     |          8 |          0 |          1 |          9 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\helper\uvBoxToPixels.js                                | JavaScript     |          7 |          0 |          1 |          8 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\i18n\en.json                                           | JSON           |         16 |          0 |          1 |         17 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\i18n\index.js                                          | JavaScript     |         18 |          1 |          4 |         23 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\i18n\tr.json                                           | JSON           |          4 |          0 |          1 |          5 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\index.css                                              | PostCSS        |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\main.jsx                                               | JavaScript JSX |          5 |          0 |          2 |          7 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\home\Home.jsx                                    | JavaScript JSX |         47 |          1 |         10 |         58 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\home\home.css                                    | PostCSS        |         13 |         14 |          4 |         31 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\color\ColorPage.jsx                     | JavaScript JSX |         56 |          0 |         10 |         66 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\color\colorPage.css                     | PostCSS        |          4 |          0 |          1 |          5 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\design\DesignPage.jsx                   | JavaScript JSX |        158 |          9 |         19 |        186 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\design\designPage.css                   | PostCSS        |         80 |          2 |         11 |         93 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\gradient\GradientPage.jsx               | JavaScript JSX |         77 |          1 |         10 |         88 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\gradient\gradientPage.css               | PostCSS        |          4 |          0 |          1 |          5 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\layerOrder\LayerOrder.jsx               | JavaScript JSX |        112 |          3 |         22 |        137 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\layerOrder\layerOrder.css               | PostCSS        |         21 |          0 |          4 |         25 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\logo\LogoPage.jsx                       | JavaScript JSX |        159 |          1 |         20 |        180 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\logo\logoPage.css                       | PostCSS        |         21 |          0 |          5 |         26 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\pattern\PatternPage.jsx                 | JavaScript JSX |        140 |          0 |         20 |        160 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\pattern\patternPage.css                 | PostCSS        |          4 |          0 |          1 |          5 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\sticker\StickerPage.jsx                 | JavaScript JSX |        164 |          2 |         17 |        183 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\sticker\stickerPage.css                 | PostCSS        |         21 |          1 |          5 |         27 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\text\TextPage.jsx                       | JavaScript JSX |        180 |          2 |         24 |        206 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\text\textPage.css                       | PostCSS        |         44 |          1 |          8 |         53 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\shaders\VertexShader.js                                | JavaScript     |         12 |          0 |          1 |         13 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\shaders\fragmentShader.js                              | JavaScript     |         55 |          0 |          1 |         56 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\store\configStore.js                                   | JavaScript     |        327 |          5 |         14 |        346 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\store\configuratorStore.js                             | JavaScript     |        309 |         52 |         32 |        393 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\store\uiStore.js                                       | JavaScript     |         10 |          0 |          4 |         14 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\calculateActionButtonBorders.js     | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\calculateItemBoundsForShader.js     | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\itemWholeBoundryCalculate.js        | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\resetBoundries.js                   | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\controls\handleMouseDown.js                      | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\controls\handleMouseMove.js                      | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\controls\handleMouseUp.js                        | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\exportUvMap\ExportUvMap.js                       | JavaScript     |         42 |          8 |         14 |         64 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\mainCanvasses\canvasForColor.js                  | JavaScript     |         51 |          1 |         16 |         68 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\mainCanvasses\canvasForTextures.js               | JavaScript     |         51 |         23 |         19 |         93 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\modelViewer\ModelViewer.jsx                      | JavaScript JSX |         83 |        118 |         37 |        238 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\presetColors\presetColors.js                     | JavaScript     |        180 |          0 |          2 |        182 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\textureCanvasses\canvasForDesign.js              | JavaScript     |         71 |         11 |         26 |        108 |
+| c:\Users\bnrdevelopment\Desktop\asd\src\utils\textureCanvasses\canvasForPattern.js             | JavaScript     |        139 |        201 |         83 |        423 |
+| Total                                                                                          |                |      5,257 |        594 |        804 |      6,655 |
++------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

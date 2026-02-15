@@ -3,7 +3,6 @@ uniform float blendFactor;
 uniform vec3 lightPosition;
 uniform sampler2D normalMap;
 uniform sampler2D canvasToColor;
-uniform sampler2D canvasToTexture;
 
 varying vec2 vUv;
 varying vec3 vNormal;
@@ -38,16 +37,8 @@ void main() {
     // ----- CANVAS TEXTURE -----
     vec3 canvasColor = texture2D(canvasToColor, vUv).rgb;
 
-    // IMPORTANT: overlay RGBA (alpha lazim) 
-    vec4 overlay = texture2D(canvasToTexture, vUv);
-
-    // Overlay'i alpha ile base'in ustune bas
-    vec3 combined = mix(canvasColor, overlay.rgb, overlay.a);
-
-    vec3 finalColor = combined * lighting;
-
     // ----- FINAL COLOR -----
-    //vec3 finalColor = canvasColor * lighting; // blendFactor zaten baseColor'da var
+    vec3 finalColor = canvasColor * lighting; // blendFactor zaten baseColor'da var
     finalColor = clamp(finalColor, 0.0, 1.0);
 
     gl_FragColor = vec4(finalColor, 1.0);

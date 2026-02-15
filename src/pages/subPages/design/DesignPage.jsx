@@ -62,7 +62,7 @@ function DesignPage() {
             gradientRotation: 0,
             gradientOffset: 0,
             gradientTransition: 0,
-            firstColor: "#000000",
+            firstColor: "#000dc5",
             secondColor: "#000000",
             isGradient: false,
           });
@@ -174,7 +174,7 @@ function DesignPage() {
               >
                 <img src={design.pngUri} alt="design" className="designImage" />
               </div>
-            )
+            ),
           )}
         </div>
       )}

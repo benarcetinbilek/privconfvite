@@ -1,0 +1,86 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "PostCSS", "JSON", "XML", "comment", "blank", "total"
+"c:\Users\bnrdevelopment\Desktop\asd\src\App.css", "PostCSS", 0, 0, 23, 0, 0, 0, 4, 27
+"c:\Users\bnrdevelopment\Desktop\asd\src\App.jsx", "JavaScript JSX", 0, 15, 0, 0, 0, 4, 5, 24
+"c:\Users\bnrdevelopment\Desktop\asd\src\assets\fakeUvMapping.js", "JavaScript", 22, 0, 0, 0, 0, 0, 1, 23
+"c:\Users\bnrdevelopment\Desktop\asd\src\assets\react.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\assets\svgs.jsx", "JavaScript JSX", 0, 414, 0, 0, 0, 22, 12, 448
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\assetDrawer\AssetDrawer.jsx", "JavaScript JSX", 0, 30, 0, 0, 0, 4, 5, 39
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\assetDrawer\assetDrawer.css", "PostCSS", 0, 0, 46, 0, 0, 1, 7, 54
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\buttons\Buttons.jsx", "JavaScript JSX", 0, 161, 0, 0, 0, 25, 25, 211
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\buttons\buttons.css", "PostCSS", 0, 0, 144, 0, 0, 1, 23, 168
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\canvas\CanvasForModel.jsx", "JavaScript JSX", 0, 36, 0, 0, 0, 7, 5, 48
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\canvas\canvasForModel.css", "PostCSS", 0, 0, 3, 0, 0, 0, 1, 4
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\colorPicker\ColorPicker.jsx", "JavaScript JSX", 0, 220, 0, 0, 0, 12, 19, 251
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\colorPicker\colorPicker.css", "PostCSS", 0, 0, 167, 0, 0, 7, 28, 202
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\fontChange\FontChange.jsx", "JavaScript JSX", 0, 4, 0, 0, 0, 0, 2, 6
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\fontChange\fontChange.css", "PostCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\footer\Footer.jsx", "JavaScript JSX", 0, 54, 0, 0, 0, 1, 5, 60
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\footer\footer.css", "PostCSS", 0, 0, 29, 0, 0, 0, 4, 33
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\header\Header.jsx", "JavaScript JSX", 0, 39, 0, 0, 0, 0, 3, 42
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\header\header.css", "PostCSS", 0, 0, 37, 0, 0, 0, 7, 44
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\itemSettings\ItemSettings.jsx", "JavaScript JSX", 0, 314, 0, 0, 0, 19, 34, 367
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\itemSettings\itemSettings.css", "PostCSS", 0, 0, 139, 0, 0, 7, 19, 165
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBarPopUp\LeftBarPopUp.jsx", "JavaScript JSX", 0, 56, 0, 0, 0, 2, 8, 66
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBarPopUp\leftBarPopUp.css", "PostCSS", 0, 0, 97, 0, 0, 16, 31, 144
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBar\LeftBar.jsx", "JavaScript JSX", 0, 124, 0, 0, 0, 0, 7, 131
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\leftBar\leftBar.css", "PostCSS", 0, 0, 51, 0, 0, 0, 7, 58
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\loadingOverlay\LoadingOverlay.jsx", "JavaScript JSX", 0, 17, 0, 0, 0, 0, 4, 21
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\loadingOverlay\loadingOverlay.css", "PostCSS", 0, 0, 56, 0, 0, 0, 8, 64
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\infoPopup\InfoPopup.jsx", "JavaScript JSX", 0, 15, 0, 0, 0, 0, 5, 20
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\infoPopup\infoPopup.css", "PostCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\shareDesignPopup\ShareDesignPopUp.jsx", "JavaScript JSX", 0, 13, 0, 0, 0, 0, 3, 16
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\shareDesignPopup\shareDesignPopUp.css", "PostCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\tutorialPopUp\TutorialPopUp.jsx", "JavaScript JSX", 0, 6, 0, 0, 0, 0, 4, 10
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\popup\tutorialPopUp\tutorialPopUp.css", "PostCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\sortableItem\SortableItem.jsx", "JavaScript JSX", 0, 17, 0, 0, 0, 0, 4, 21
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\subHeader\SubHeader.jsx", "JavaScript JSX", 0, 12, 0, 0, 0, 0, 2, 14
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\subHeader\subHeader.css", "PostCSS", 0, 0, 24, 0, 0, 0, 3, 27
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\uploadBox\UploadBox.jsx", "JavaScript JSX", 0, 95, 0, 0, 0, 4, 25, 124
+"c:\Users\bnrdevelopment\Desktop\asd\src\components\uploadBox\uploadBox.css", "PostCSS", 0, 0, 39, 0, 0, 0, 7, 46
+"c:\Users\bnrdevelopment\Desktop\asd\src\helper\assetSvgCache.js", "JavaScript", 38, 0, 0, 0, 0, 5, 12, 55
+"c:\Users\bnrdevelopment\Desktop\asd\src\helper\getItems.js", "JavaScript", 6, 0, 0, 0, 0, 0, 2, 8
+"c:\Users\bnrdevelopment\Desktop\asd\src\helper\loadImage.js", "JavaScript", 8, 0, 0, 0, 0, 0, 1, 9
+"c:\Users\bnrdevelopment\Desktop\asd\src\helper\uvBoxToPixels.js", "JavaScript", 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\bnrdevelopment\Desktop\asd\src\i18n\en.json", "JSON", 0, 0, 0, 16, 0, 0, 1, 17
+"c:\Users\bnrdevelopment\Desktop\asd\src\i18n\index.js", "JavaScript", 18, 0, 0, 0, 0, 1, 4, 23
+"c:\Users\bnrdevelopment\Desktop\asd\src\i18n\tr.json", "JSON", 0, 0, 0, 4, 0, 0, 1, 5
+"c:\Users\bnrdevelopment\Desktop\asd\src\index.css", "PostCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\main.jsx", "JavaScript JSX", 0, 5, 0, 0, 0, 0, 2, 7
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\home\Home.jsx", "JavaScript JSX", 0, 47, 0, 0, 0, 1, 10, 58
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\home\home.css", "PostCSS", 0, 0, 13, 0, 0, 14, 4, 31
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\color\ColorPage.jsx", "JavaScript JSX", 0, 56, 0, 0, 0, 0, 10, 66
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\color\colorPage.css", "PostCSS", 0, 0, 4, 0, 0, 0, 1, 5
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\design\DesignPage.jsx", "JavaScript JSX", 0, 158, 0, 0, 0, 9, 19, 186
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\design\designPage.css", "PostCSS", 0, 0, 80, 0, 0, 2, 11, 93
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\gradient\GradientPage.jsx", "JavaScript JSX", 0, 77, 0, 0, 0, 1, 10, 88
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\gradient\gradientPage.css", "PostCSS", 0, 0, 4, 0, 0, 0, 1, 5
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\layerOrder\LayerOrder.jsx", "JavaScript JSX", 0, 112, 0, 0, 0, 3, 22, 137
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\layerOrder\layerOrder.css", "PostCSS", 0, 0, 21, 0, 0, 0, 4, 25
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\logo\LogoPage.jsx", "JavaScript JSX", 0, 159, 0, 0, 0, 1, 20, 180
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\logo\logoPage.css", "PostCSS", 0, 0, 21, 0, 0, 0, 5, 26
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\pattern\PatternPage.jsx", "JavaScript JSX", 0, 140, 0, 0, 0, 0, 20, 160
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\pattern\patternPage.css", "PostCSS", 0, 0, 4, 0, 0, 0, 1, 5
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\sticker\StickerPage.jsx", "JavaScript JSX", 0, 164, 0, 0, 0, 2, 17, 183
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\sticker\stickerPage.css", "PostCSS", 0, 0, 21, 0, 0, 1, 5, 27
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\text\TextPage.jsx", "JavaScript JSX", 0, 180, 0, 0, 0, 2, 24, 206
+"c:\Users\bnrdevelopment\Desktop\asd\src\pages\subPages\text\textPage.css", "PostCSS", 0, 0, 44, 0, 0, 1, 8, 53
+"c:\Users\bnrdevelopment\Desktop\asd\src\shaders\VertexShader.js", "JavaScript", 12, 0, 0, 0, 0, 0, 1, 13
+"c:\Users\bnrdevelopment\Desktop\asd\src\shaders\fragmentShader.js", "JavaScript", 55, 0, 0, 0, 0, 0, 1, 56
+"c:\Users\bnrdevelopment\Desktop\asd\src\store\configStore.js", "JavaScript", 327, 0, 0, 0, 0, 5, 14, 346
+"c:\Users\bnrdevelopment\Desktop\asd\src\store\configuratorStore.js", "JavaScript", 309, 0, 0, 0, 0, 52, 32, 393
+"c:\Users\bnrdevelopment\Desktop\asd\src\store\uiStore.js", "JavaScript", 10, 0, 0, 0, 0, 0, 4, 14
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\calculateActionButtonBorders.js", "JavaScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\calculateItemBoundsForShader.js", "JavaScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\itemWholeBoundryCalculate.js", "JavaScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\calculations\resetBoundries.js", "JavaScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\controls\handleMouseDown.js", "JavaScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\controls\handleMouseMove.js", "JavaScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\controls\handleMouseUp.js", "JavaScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\exportUvMap\ExportUvMap.js", "JavaScript", 42, 0, 0, 0, 0, 8, 14, 64
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\mainCanvasses\canvasForColor.js", "JavaScript", 51, 0, 0, 0, 0, 1, 16, 68
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\mainCanvasses\canvasForTextures.js", "JavaScript", 51, 0, 0, 0, 0, 23, 19, 93
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\modelViewer\ModelViewer.jsx", "JavaScript JSX", 0, 83, 0, 0, 0, 118, 37, 238
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\presetColors\presetColors.js", "JavaScript", 180, 0, 0, 0, 0, 0, 2, 182
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\textureCanvasses\canvasForDesign.js", "JavaScript", 71, 0, 0, 0, 0, 11, 26, 108
+"c:\Users\bnrdevelopment\Desktop\asd\src\utils\textureCanvasses\canvasForPattern.js", "JavaScript", 139, 0, 0, 0, 0, 201, 83, 423
+"Total", "-", 1346, 2823, 1067, 20, 1, 594, 804, 6655

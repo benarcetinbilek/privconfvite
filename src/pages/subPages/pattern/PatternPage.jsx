@@ -4,7 +4,6 @@ import configStore from "../../../store/configStore";
 import { ButtonForPatterns } from "../../../components/buttons/Buttons";
 import configuratorStore from "../../../store/configuratorStore";
 import { startTransition, useState } from "react";
-import { getItems } from "../../../helper/getItems";
 import { ItemSettings } from "../../../components/itemSettings/ItemSettings";
 import { ColorPicker } from "../../../components/colorPicker/ColorPicker";
 

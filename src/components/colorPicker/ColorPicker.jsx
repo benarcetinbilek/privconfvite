@@ -11,12 +11,12 @@ export const ColorPicker = ({
   firstColor,
   secondColor,
   type,
+  gradientRotation,
+  gradientOffset,
+  gradientTransition,
 }) => {
   const [openSection, setOpenSection] = useState(null);
   const [picker, setPicker] = useState("first");
-  console.log("colorpicker", firstColor);
-  console.log("colorpicker", secondColor);
-  console.log("type", type);
 
   const toggleSection = (sectionName) => {
     if (openSection === sectionName) setOpenSection(null);
@@ -130,6 +130,94 @@ export const ColorPicker = ({
             </div>
           </div>
         </div>
+
+        {/* GRADIENT FEATURES */}
+
+        {type !== "color" && (
+          <div className="sectionBox" style={{ marginTop: "10px" }}>
+            <div
+              className="sectionHeader"
+              onClick={() => toggleSection("features")}
+            >
+              <span>Gradient Features</span>
+              <span>{openSection === "features" ? "▲" : "▼"}</span>
+            </div>
+
+            <div
+              className={`dropdownContent gradientFeatures ${
+                openSection === "features" ? "open" : "close"
+              }`}
+            >
+              {/* GRADIENT ROTATION */}
+
+              <div className="colorPickerSettings">
+                <div className="colorPickerSettingstitle">
+                  Gradient Rotation:
+                </div>
+                <div className="colorPickerSettingsValue">
+                  {gradientRotation || 0}%
+                </div>
+
+                <input
+                  className="colorPickerSettingsInput"
+                  type="range"
+                  min="-3.1415"
+                  max="3.1415"
+                  step="0.01"
+                  value={gradientRotation}
+                  onChange={(e) =>
+                    handleColorApply("gradientRotation", Number(e.target.value))
+                  }
+                />
+              </div>
+
+              {/* GRADIENT OFFSET */}
+              <div className="colorPickerSettings">
+                <div className="colorPickerSettingstitle">Gradient Offset:</div>
+                <div className="colorPickerSettingsValue">
+                  {gradientOffset || 0}%
+                </div>
+
+                <input
+                  className="colorPickerSettingsInput"
+                  type="range"
+                  min="-2"
+                  max="2"
+                  step="0.01"
+                  value={gradientOffset}
+                  onChange={(e) =>
+                    handleColorApply("gradientOffset", Number(e.target.value))
+                  }
+                />
+              </div>
+
+              {/* GRADIENT TRANSITION */}
+              <div className="colorPickerSettings">
+                <div className="colorPickerSettingstitle">
+                  Gradient Transition:
+                </div>
+                <div className="colorPickerSettingsValue">
+                  {gradientTransition || 0}%
+                </div>
+
+                <input
+                  className="colorPickerSettingsInput"
+                  type="range"
+                  min="0.2"
+                  max="2"
+                  step="0.01"
+                  value={gradientTransition}
+                  onChange={(e) =>
+                    handleColorApply(
+                      "gradientTransition",
+                      Number(e.target.value),
+                    )
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Last Used Colors */}

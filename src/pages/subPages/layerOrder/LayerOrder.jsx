@@ -29,10 +29,11 @@ function LayerOrder() {
   const allItems = configuratorStore.getState().getAllItems();
   const [items, setItems] = useState([...allItems]);
   console.log("Updated layer order in store:", allItems);
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: { distance: 5 },
-    })
+    }),
   );
 
   const updateOrderInStore = (newOrder) => {
@@ -60,6 +61,7 @@ function LayerOrder() {
   };
 
   const renderItem = (item) => {
+    console.log("Rendering item in LayerOrder:", item);
     switch (item.type) {
       case "pattern":
         return (

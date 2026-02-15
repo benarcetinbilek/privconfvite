@@ -31,3 +31,8 @@ custom sayfa yapilabilir leftbar icin icine surukle birak mantigi ile input buto
 yeni bir sayfa eklenebilir buda texture degistirmek icin parcalarin ayri ayri configuratorde bulunan texturelari degisebilir
 
 modellerın ustune sadece prıntable area eklenebılır
+
+
+
+
+layerIndex icin en son indexi alip oyle create etmen gerekiyor reis bunu ayarlar
