@@ -11,9 +11,10 @@
  * - isCurved, curvedAngle
  */
 
-const DEFAULT_FONT = "arial";
-const BASE_FONT_SIZE = 48; // Base size before scale, in texture pixels
-const TEXT_PADDING = 4;
+const DEFAULT_FONT = "Wide Sans";
+const BASE_FONT_SIZE = 40; // Base size before scale, in texture pixels
+// no extra padding – border should hug text box
+const TEXT_PADDING = 0;
 
 /**
  * Measure text dimensions for a given font and scale
@@ -47,10 +48,8 @@ function createTextFillStyle(ctx, item, bounds) {
   const { x, y, w, h } = bounds;
   const cx = x + w / 2 + Math.cos(gradientRotation) * w * 0.5 * gradientOffset;
   const cy = y + h / 2 + Math.sin(gradientRotation) * h * 0.5 * gradientOffset;
-  const ex =
-    cx + Math.cos(gradientRotation) * w * (gradientTransition || 1);
-  const ey =
-    cy + Math.sin(gradientRotation) * h * (gradientTransition || 1);
+  const ex = cx + Math.cos(gradientRotation) * w * (gradientTransition || 1);
+  const ey = cy + Math.sin(gradientRotation) * h * (gradientTransition || 1);
 
   const grad = ctx.createLinearGradient(cx, cy, ex, ey);
   grad.addColorStop(0, firstColor);
@@ -166,12 +165,12 @@ export async function drawText(targetCtx, size, uvConfig, item) {
   let boxH = h + pad * 2;
   if (item.isCurved) {
     const radius = Math.max(fontSize * 1.5, 50);
-    boxW = Math.max(boxW, radius * 2 + pad * 4);
-    boxH = Math.max(boxH, radius * 2 + pad * 4);
+    boxW = Math.max(boxW, radius * 2 + pad * 2);
+    boxH = Math.max(boxH, radius * 2 + pad * 2);
   }
-
-  const offW = Math.ceil(boxW * 2);
-  const offH = Math.ceil(boxH * 2);
+  // no additional rotation margin – offscreen fits exactly the text box
+  const offW = Math.ceil(boxW);
+  const offH = Math.ceil(boxH);
   const off =
     typeof OffscreenCanvas !== "undefined"
       ? new OffscreenCanvas(offW, offH)
@@ -191,12 +190,7 @@ export async function drawText(targetCtx, size, uvConfig, item) {
 
   if (item.backgroundColor) {
     octx.fillStyle = item.backgroundColor;
-    octx.fillRect(
-      localCenterX - boxW / 2,
-      localCenterY - boxH / 2,
-      boxW,
-      boxH
-    );
+    octx.fillRect(localCenterX - boxW / 2, localCenterY - boxH / 2, boxW, boxH);
   }
 
   if (item.isCurved) {
@@ -222,7 +216,7 @@ export async function drawText(targetCtx, size, uvConfig, item) {
     centerX - off.width / 2,
     centerY - off.height / 2,
     off.width,
-    off.height
+    off.height,
   );
   targetCtx.restore();
 }

@@ -7,20 +7,20 @@ import * as THREE from "three";
 
 //function import
 import { ModelViewer } from "../../utils/modelViewer/ModelViewer";
+import configuratorStore from "../../store/configuratorStore";
 
 function CanvasForModel() {
-  console.log("CanvasForModel");
-  //TODO-- check antialias and dpr what are those maybe mobile friendly
+  const isDraggingTexture = configuratorStore((s) => s.isDraggingTexture);
+
   return (
     <div className="canvasContainer">
-      {" "}
       <Canvas
         camera={{
           position: [0.0, 0.0, 0.8],
           fov: 50,
           up: [0, 3, 0],
-          near: 0.1, // Adjusted near clipping plane
-          far: 10000, // Adjusted far clipping plane
+          near: 0.1,
+          far: 10000,
         }}
         gl={{ preserveDrawingBuffer: true, antialias: false }}
         dpr={[1, 1.5]}
@@ -28,7 +28,8 @@ function CanvasForModel() {
         <ModelViewer />
         <OrbitControls
           makeDefault
-          enableZoom={true} // Allow zooming
+          enabled={!isDraggingTexture}
+          enableZoom={true}
           // enablePan={false} // Disable right-click panning
           // minDistance={0.6} // Prevent zooming too close
           // maxDistance={1.1} // Prevent zooming too far

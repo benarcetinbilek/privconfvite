@@ -1,3 +1,4 @@
+import { color } from "three/tsl";
 import { create } from "zustand";
 
 const configuratorStore = create((set, get) => ({
@@ -46,6 +47,101 @@ const configuratorStore = create((set, get) => ({
       gradientTransition: 0.5,
     },
   },
+  exampleState: {
+    LeftSleeve: {
+      configurable: true,
+      normalMapUri: "/https://example.com/normalMap.png",
+      scale: 1,
+      rotation: 0,
+    },
+    RightSleeve: {
+      configurable: true,
+      normalMapUri: "/https://example.com/normalMap.png",
+      scale: 1,
+      rotation: 0,
+    },
+    Front: {
+      configurable: true,
+      normalMapUri: "/https://example.com/normalMap.png",
+      scale: 1,
+      rotation: 0,
+    },
+    Back: {
+      configurable: true,
+      normalMapUri: "/https://example.com/normalMap.png",
+      scale: 1,
+      rotation: 0,
+    },
+    Collar: {
+      configurable: true,
+      normalMapUri: "/https://example.com/normalMap.png",
+      scale: 1,
+      rotation: 0,
+    },
+    inside: {
+      configurable: false,
+      color: "#000000",
+      normalMapUri: "/https://example.com/normalMap.png",
+      scale: 1,
+      rotation: 0,
+    },
+  },
+
+  // Per-part config from backend: configurable → normalMap only; non-configurable → normalMap + color
+  partsConfig: null,
+
+  setPartsConfig: (val) => set({ partsConfig: val }),
+
+  // colorsForParts: {
+  //   Front: {
+  //     firstColor: "#ef4444ff", // parlak kırmızı – ön taraf dikkat çekici (logo/ana renk)
+  //     secondColor: "#000000ff",
+  //     isGradient: false,
+  //     gradientRotation: 0,
+  //     gradientOffset: 0,
+  //     gradientTransition: 0.5,
+  //   },
+  //   Back: {
+  //     firstColor: "#1e40afff", // koyu mavi – arka daha sade
+  //     secondColor: "#000000ff",
+  //     isGradient: false,
+  //     gradientRotation: 0,
+  //     gradientOffset: 0,
+  //     gradientTransition: 0.5,
+  //   },
+  //   LeftSleeve: {
+  //     firstColor: "#10b981ff", // emerald yeşil – sol kol kontrast
+  //     secondColor: "#000000ff",
+  //     isGradient: false,
+  //     gradientRotation: 0,
+  //     gradientOffset: 0,
+  //     gradientTransition: 0.5,
+  //   },
+  //   RightSleeve: {
+  //     firstColor: "#f59e0bff", // amber/sarı-turuncu – sağ kol farklı
+  //     secondColor: "#000000ff",
+  //     isGradient: false,
+  //     gradientRotation: 0,
+  //     gradientOffset: 0,
+  //     gradientTransition: 0.5,
+  //   },
+  //   BottomHem: {
+  //     firstColor: "#111827ff", // çok koyu gri/siyah – yaka temiz ve kontrast
+  //     secondColor: "#000000ff",
+  //     isGradient: false,
+  //     gradientRotation: 0,
+  //     gradientOffset: 0,
+  //     gradientTransition: 0.5,
+  //   },
+  //   Collar: {
+  //     firstColor: "#374151ff", // koyu gri – alt rib bant
+  //     secondColor: "#000000ff",
+  //     isGradient: false,
+  //     gradientRotation: 0,
+  //     gradientOffset: 0,
+  //     gradientTransition: 0.5,
+  //   },
+  // },
 
   updateColor: (part, val) =>
     set((state) => ({
@@ -349,6 +445,11 @@ const configuratorStore = create((set, get) => ({
     if (items.length === 0) return 0;
     return Math.max(...items.map((i) => parseInt(i.id)));
   },
+
+  selectedTextureId: null,
+  setSelectedTextureId: (id) => set({ selectedTextureId: id }),
+  isDraggingTexture: false,
+  setDraggingTexture: (val) => set({ isDraggingTexture: val }),
 
   selectItems: (state, type) =>
     state.itemsOnModel.filter((item) => item.type === type),

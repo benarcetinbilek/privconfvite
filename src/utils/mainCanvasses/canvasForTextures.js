@@ -4,6 +4,7 @@ import { drawPattern } from "../textureCanvasses/canvasForPattern";
 import { drawText } from "../textureCanvasses/canvasForText";
 import { drawSticker } from "../textureCanvasses/canvasForSticker";
 import { drawLogo } from "../textureCanvasses/canvasForLogo";
+import { drawSelectionOverlay } from "../textureCanvasses/canvasForSelectionOverlay";
 
 export const createCanvasForTextures = (size = 1024) => {
   const canvas = document.createElement("canvas");
@@ -31,16 +32,12 @@ export const drawTexturesToCanvas = async (
   { ctx, size },
   uvConfig,
   itemsOnModel,
+  selectedTextureId = null,
 ) => {
   ctx.clearRect(0, 0, size, size);
   ctx.save();
   drawCount++;
   ctx.globalAlpha = 0.5;
-
-  // ctx.fillStyle = "rgba(155, 15, 15, 1)";
-  // ctx.fillRect(0, 0, size, size);
-
-  console.log("draw Textures To Canvas count:", drawCount);
 
   const items = (itemsOnModel || [])
     .filter((i) => i?.isActive !== false)
@@ -49,32 +46,31 @@ export const drawTexturesToCanvas = async (
   for (const item of items) {
     switch (item.type) {
       case "pattern":
-        // Handle pattern drawing
         await drawPattern(ctx, size, uvConfig, item);
         break;
-
       case "logo":
         await drawLogo(ctx, size, uvConfig, item);
         break;
-
       case "sticker":
         await drawSticker(ctx, size, uvConfig, item);
         break;
-
       case "design":
-        // Handle design drawing
         await drawDesign(ctx, size, uvConfig, item);
         break;
-
       case "text":
         await drawText(ctx, size, uvConfig, item);
         break;
-
       default:
         break;
     }
+  }
 
-    // logo/sticker/text/pattern sonra
+  if (selectedTextureId) {
+    const selectedItem = items.find((i) => i.id === selectedTextureId);
+    if (selectedItem && ["text", "sticker", "logo"].includes(selectedItem.type)) {
+      ctx.globalAlpha = 1;
+      await drawSelectionOverlay(ctx, size, selectedItem);
+    }
   }
 };
 

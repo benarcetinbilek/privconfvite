@@ -23,6 +23,7 @@
     "react-i18next": "^16.2.4",
     "react-toastify": "^11.0.5",
     "three": "^0.181.2",
+    "three-custom-shader-material": "^6.4.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {

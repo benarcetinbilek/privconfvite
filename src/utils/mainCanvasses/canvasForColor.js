@@ -24,7 +24,15 @@ export const createColorCanvasTexture = (size = 512) => {
 
 let drawCount = 0;
 
-export const drawColorsToCanvas = ({ ctx, size }, uvConfig, colorsForParts) => {
+/**
+ * @param partsConfig - optional; if provided, only parts with configurable !== false are drawn (configurable parts only)
+ */
+export const drawColorsToCanvas = (
+  { ctx, size },
+  uvConfig,
+  colorsForParts,
+  partsConfig = null,
+) => {
   ctx.clearRect(0, 0, size, size);
 
   drawCount++;
@@ -33,6 +41,7 @@ export const drawColorsToCanvas = ({ ctx, size }, uvConfig, colorsForParts) => {
   Object.entries(uvConfig).forEach(([part, [uvMin, uvMax]]) => {
     const state = colorsForParts?.[part];
     if (!state) return;
+    if (partsConfig?.[part]?.configurable === false) return;
 
     const { xMin, yMin, w, h } = uvBoxToPixels(uvMin, uvMax, size);
     // console.log("xmin", xMin, "ymin", yMin, "w", w);
@@ -44,7 +53,15 @@ export const drawColorsToCanvas = ({ ctx, size }, uvConfig, colorsForParts) => {
       gradientOffset = 0,
       gradientTransition = 1,
     } = state;
-
+    console.log(
+      "Drawing part:",
+      part,
+      "with colors:",
+      firstColor,
+      secondColor,
+      "isGradient:",
+      isGradient,
+    );
     if (isGradient && secondColor) {
       const rad = gradientRotation;
 

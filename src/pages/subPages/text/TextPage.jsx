@@ -82,7 +82,7 @@ function TextPage() {
           gradientRotation: 0,
           gradientOffset: 0,
           gradientTransition: 0,
-          isCurved: true,
+          isCurved: false,
           curvedAngle: 0,
           layerIndex: newId,
           isActive: true,
