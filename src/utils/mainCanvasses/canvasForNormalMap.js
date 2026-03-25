@@ -2,24 +2,16 @@ import * as THREE from "three";
 
 const DEFAULT_NORMAL_MAP_URI = "/normalMap.png";
 
-const uvBoxToPixels = (uvMin, uvMax, size) => {
-  const xMin = Math.floor(Math.min(uvMin.u, uvMax.u) * size);
-  const xMax = Math.ceil(Math.max(uvMin.u, uvMax.u) * size);
-  const yMin = Math.floor(Math.min(uvMin.v, uvMax.v) * size);
-  const yMax = Math.ceil(Math.max(uvMin.v, uvMax.v) * size);
-  return { xMin, yMin, w: xMax - xMin, h: yMax - yMin };
-};
-
-function buildPartMask(uvConfig, partName, size) {
-  const uv = uvConfig?.[partName];
-  if (!uv) return null;
+/** Build mask from part's uv array (part.uv) or from uvConfig[partName] for backwards compat */
+function buildPartMask(uv, size) {
+  if (!uv || !Array.isArray(uv) || uv.length < 2) return null;
+  const [min, max] = uv;
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
   const ctx = canvas.getContext("2d", { alpha: true });
   ctx.fillStyle = "#fff";
   ctx.imageSmoothingEnabled = false;
-  const [min, max] = uv;
   const x = Math.max(0, Math.floor(Math.min(min.u, max.u) * size));
   const y = Math.max(0, Math.floor(Math.min(min.v, max.v) * size));
   const w = Math.max(1, Math.ceil(Math.abs(max.u - min.u) * size));
@@ -35,7 +27,9 @@ function loadNormalMapImage(uri) {
   const cached = imageCache.get(key);
   if (cached !== undefined) return Promise.resolve(cached);
   const normalizedUri =
-    uri && String(uri).startsWith("/https") ? String(uri).slice(1) : uri || DEFAULT_NORMAL_MAP_URI;
+    uri && String(uri).startsWith("/https")
+      ? String(uri).slice(1)
+      : uri || DEFAULT_NORMAL_MAP_URI;
   const promise = new Promise((resolve) => {
     const img = new Image();
     img.crossOrigin = "anonymous";
@@ -88,18 +82,20 @@ export const createNonConfigurableColorCanvasTexture = (size = 1024) => {
   return { canvas, ctx, texture, size };
 };
 
+/** Base tile scale. Lower = smaller tiles (more repeats). Very small = fine grain; increase scale in state to get bigger tiles. */
+const NORMAL_MAP_TILE_SCALE = 0.001;
+
 /**
  * Draw per-part normal map and non-configurable color.
+ * Uses each part's part.uv for coordinates (from exampleState/partsConfig).
  * - Configurable parts: only tiled normal map in part's UV region.
  * - Non-configurable parts: tiled normal map + solid color in part's UV region.
  * @param {{ normalPack: { ctx, size }, colorPack: { ctx, size } }} packs
- * @param {Record<string, [{u,v},{u,v}]>} uvConfig
- * @param {Record<string, { configurable: boolean, normalMapUri?: string, scale?: number, rotation?: number, color?: string }>} partsConfig
+ * @param {Record<string, { configurable?, normalMapUri?, scale?, rotation?, color?, uv: [{u,v},{u,v}] }>} partsConfig
  * @param {HTMLImageElement} defaultNormalImage - preloaded fallback normal map
  */
 export async function drawNormalMapAndNonConfigurableColor(
   { normalPack, colorPack },
-  uvConfig,
   partsConfig,
   defaultNormalImage = null,
 ) {
@@ -108,19 +104,25 @@ export async function drawNormalMapAndNonConfigurableColor(
   normalCtx.clearRect(0, 0, size, size);
   colorCtx.clearRect(0, 0, size, size);
 
-  if (!uvConfig || !partsConfig || typeof partsConfig !== "object") return;
+  if (!partsConfig || typeof partsConfig !== "object") return;
 
-  const partNames = Object.keys(partsConfig).filter((p) => uvConfig[p]);
+  const partNames = Object.keys(partsConfig).filter(
+    (p) =>
+      partsConfig[p]?.uv &&
+      Array.isArray(partsConfig[p].uv) &&
+      partsConfig[p].uv.length >= 2,
+  );
   for (const partName of partNames) {
     const part = partsConfig[partName];
-    const uv = uvConfig[partName];
+    const uv = part.uv;
     if (!uv || !part) continue;
 
-    const [uvMin, uvMax] = uv;
     const scale = Math.max(0.01, part.scale ?? 1);
     const rotationRad = ((part.rotation ?? 0) * Math.PI) / 180;
+    // In canvas: higher patternScale = bigger tiles. So multiply: scale 1 = base (9), scale 2 = bigger, scale 0.5 = smaller.
+    const patternScale = NORMAL_MAP_TILE_SCALE * scale;
 
-    const regionMask = buildPartMask(uvConfig, partName, size);
+    const regionMask = buildPartMask(uv, size);
     if (!regionMask) continue;
 
     let img = await loadNormalMapImage(part.normalMapUri);
@@ -138,10 +140,12 @@ export async function drawNormalMapAndNonConfigurableColor(
         octx.save();
         octx.translate(size / 2, size / 2);
         octx.rotate(rotationRad);
-        octx.scale(scale, scale);
+        octx.scale(patternScale, patternScale);
         octx.translate(-size / 2, -size / 2);
         octx.fillStyle = pattern;
-        octx.fillRect(-size, -size, size * 3, size * 3);
+        // When patternScale is tiny, we must fill a huge rect so it covers the canvas after scaling
+        const fillExtent = Math.ceil(size / Math.max(0.0001, patternScale)) * 2;
+        octx.fillRect(-fillExtent, -fillExtent, fillExtent * 2, fillExtent * 2);
         octx.restore();
       }
 
@@ -152,7 +156,7 @@ export async function drawNormalMapAndNonConfigurableColor(
     }
 
     if (part.configurable === false && part.color) {
-      const mask = buildPartMask(uvConfig, partName, size);
+      const mask = buildPartMask(uv, size);
       if (mask) {
         colorCtx.save();
         colorCtx.fillStyle = part.color;

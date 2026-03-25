@@ -11,12 +11,7 @@ import {
   createColorCanvasTexture,
   drawColorsToCanvas,
 } from "../mainCanvasses/canvasForColor";
-import {
-  createNormalMapCanvasTexture,
-  createNonConfigurableColorCanvasTexture,
-  drawNormalMapAndNonConfigurableColor,
-} from "../mainCanvasses/canvasForNormalMap";
-import { useFrame } from "@react-three/fiber";
+
 import {
   createCanvasForTextures,
   drawTexturesToCanvas,
@@ -27,29 +22,12 @@ const TEXTURE_SIZE = 1024;
 
 export function ModelViewer() {
   const { setGeometry, uvConfig } = configStore();
-  const {
-    colorsForParts,
-    itemsOnModel,
-    selectedTextureId,
-    partsConfig,
-    exampleState,
-  } = configuratorStore();
+  const { colorsForParts, itemsOnModel, selectedTextureId } =
+    configuratorStore();
   const meshRef = useRef();
 
-  const colorPack = useMemo(() => createColorCanvasTexture(TEXTURE_SIZE), []);
+  const colorPack = useMemo(() => createColorCanvasTexture(), []);
   const texturePack = useMemo(() => createCanvasForTextures(), []);
-  const normalPack = useMemo(
-    () => createNormalMapCanvasTexture(TEXTURE_SIZE),
-    [],
-  );
-  const nonConfigurableColorPack = useMemo(
-    () => createNonConfigurableColorCanvasTexture(TEXTURE_SIZE),
-    [],
-  );
-  const combinedColorPack = useMemo(
-    () => createColorCanvasTexture(TEXTURE_SIZE),
-    [],
-  );
   const textureSize = texturePack.size ?? TEXTURE_SIZE;
 
   const { handlePointerDown, handlePointerMove, handlePointerUp } =
@@ -65,58 +43,22 @@ export function ModelViewer() {
 
   const materialRef = useRef();
 
-  // Merge non-configurable color (from new canvas) + configurable color (colorPack) → combined, then set uniform
-  const mergeColorCanvases = () => {
-    const { ctx, size, texture } = combinedColorPack;
-    ctx.clearRect(0, 0, size, size);
-    ctx.drawImage(nonConfigurableColorPack.canvas, 0, 0);
-    ctx.drawImage(colorPack.canvas, 0, 0, size, size);
-    texture.needsUpdate = true;
-    if (materialRef.current) {
-      materialRef.current.uniforms.canvasToColor.value = texture;
-      materialRef.current.uniformsNeedUpdate = true;
-    }
-  };
-
-  // uvConfig / colorsForParts → draw configurable parts only to colorPack, then merge and set canvasToColor
+  // uvConfig veya colorsForParts değişince canvas'ı redraw et
   useEffect(() => {
     if (!uvConfig || !colorsForParts) return;
-    const partsConfigForDraw = partsConfig ?? exampleState;
+    console.log("useeffect modelviewer colorpack");
+
     const t0 = performance.now();
-    drawColorsToCanvas(colorPack, uvConfig, colorsForParts, partsConfigForDraw);
+    drawColorsToCanvas(colorPack, uvConfig, colorsForParts);
     const t1 = performance.now();
+
     console.log(`[COLOR] draw took ${(t1 - t0).toFixed(2)} ms`);
     colorPack.texture.needsUpdate = true;
-    mergeColorCanvases();
-  }, [uvConfig, colorsForParts, partsConfig, exampleState, colorPack]);
 
-  // uvConfig / partsConfig (or exampleState) → draw normal map + non-configurable color, then merge and set uniforms
-  useEffect(() => {
-    let cancelled = false;
-    const partsConfigForDraw = partsConfig ?? exampleState;
-    if (!uvConfig || !partsConfigForDraw) return;
-
-    (async () => {
-      const t0 = performance.now();
-      await drawNormalMapAndNonConfigurableColor(
-        { normalPack, colorPack: nonConfigurableColorPack },
-        uvConfig,
-        partsConfigForDraw,
-        normalMapTexture?.image ?? null,
-      );
-      if (cancelled) return;
-      const t1 = performance.now();
-      console.log(`[NORMAL+NC] draw took ${(t1 - t0).toFixed(2)} ms`);
-      normalPack.texture.needsUpdate = true;
-      nonConfigurableColorPack.texture.needsUpdate = true;
-      mergeColorCanvases();
-      if (materialRef.current) {
-        materialRef.current.uniforms.normalMap.value = normalPack.texture;
-        materialRef.current.uniformsNeedUpdate = true;
-      }
-    })();
-    return () => { cancelled = true; };
-  }, [uvConfig, partsConfig, exampleState, normalPack, nonConfigurableColorPack, combinedColorPack, colorPack]);
+    if (materialRef.current) {
+      materialRef.current.uniforms.canvasToColor.value = colorPack.texture;
+    }
+  }, [uvConfig, colorsForParts, colorPack]);
 
   useEffect(() => {
     let cancelled = false;
@@ -200,10 +142,10 @@ export function ModelViewer() {
       blendFactor: { value: 1.0 },
       lightPosition: { value: new Vector3(2.0, 2.0, 2.0) },
       normalMap: { value: normalMapTexture },
-      canvasToColor: { value: combinedColorPack.texture },
+      canvasToColor: { value: colorPack.texture },
       canvasToTexture: { value: texturePack.texture },
     }),
-    [normalMapTexture, combinedColorPack.texture, texturePack.texture],
+    [normalMapTexture, colorPack.texture, texturePack.texture],
   );
 
   return (

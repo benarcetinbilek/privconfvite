@@ -25,14 +25,8 @@ export const createColorCanvasTexture = (size = 512) => {
 let drawCount = 0;
 
 /**
- * @param partsConfig - optional; if provided, only parts with configurable !== false are drawn (configurable parts only)
  */
-export const drawColorsToCanvas = (
-  { ctx, size },
-  uvConfig,
-  colorsForParts,
-  partsConfig = null,
-) => {
+export const drawColorsToCanvas = ({ ctx, size }, uvConfig, colorsForParts) => {
   ctx.clearRect(0, 0, size, size);
 
   drawCount++;
@@ -41,7 +35,6 @@ export const drawColorsToCanvas = (
   Object.entries(uvConfig).forEach(([part, [uvMin, uvMax]]) => {
     const state = colorsForParts?.[part];
     if (!state) return;
-    if (partsConfig?.[part]?.configurable === false) return;
 
     const { xMin, yMin, w, h } = uvBoxToPixels(uvMin, uvMax, size);
     // console.log("xmin", xMin, "ymin", yMin, "w", w);

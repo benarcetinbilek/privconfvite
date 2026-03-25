@@ -10,8 +10,9 @@ varying vec3 vNormal;
 varying vec3 vPosition;
 
 void main() {
-    // ----- NORMAL MAP (per-part tiled normals drawn on canvas, sample by UV) -----
-    vec3 mapNormal = texture2D(normalMap, vUv).rgb * 2.0 - 1.0;
+    // ----- NORMAL MAP -----
+    vec2 tiledUV = fract(vUv * 9.0);
+    vec3 mapNormal = texture2D(normalMap, tiledUV).rgb * 2.0 - 1.0;
     vec3 finalNormal = normalize(vNormal + mapNormal);
 
     // ----- LIGHT DIRECTION -----

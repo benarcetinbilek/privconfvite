@@ -47,43 +47,68 @@ const configuratorStore = create((set, get) => ({
       gradientTransition: 0.5,
     },
   },
+
   exampleState: {
     LeftSleeve: {
       configurable: true,
       normalMapUri: "/https://example.com/normalMap.png",
       scale: 1,
       rotation: 0,
+      uv: [
+        { u: 0.54, v: 0.02 }, // min (u, v)
+        { u: 0.81, v: 0.43 }, // max (u, v)
+      ],
     },
     RightSleeve: {
       configurable: true,
       normalMapUri: "/https://example.com/normalMap.png",
       scale: 1,
       rotation: 0,
+      uv: [
+        { u: 0.255, v: 0.02 },
+        { u: 0.534, v: 0.43 },
+      ],
     },
     Front: {
       configurable: true,
       normalMapUri: "/https://example.com/normalMap.png",
-      scale: 1,
+      scale: 10,
       rotation: 0,
+      uv: [
+        { u: 0.119, v: 0.503 },
+        { u: 0.53, v: 0.99 },
+      ],
     },
     Back: {
       configurable: true,
       normalMapUri: "/https://example.com/normalMap.png",
       scale: 1,
       rotation: 0,
+      uv: [
+        { u: 0.572, v: 0.48 },
+        { u: 0.955, v: 0.99 },
+      ],
     },
     Collar: {
       configurable: true,
       normalMapUri: "/https://example.com/normalMap.png",
       scale: 1,
       rotation: 0,
+      uv: [
+        { u: 0.184, v: 0.438 },
+        { u: 0.475, v: 0.49 },
+      ],
     },
     inside: {
       configurable: false,
-      color: "#000000",
+      color: "#ffffff",
       normalMapUri: "/https://example.com/normalMap.png",
       scale: 1,
       rotation: 0,
+      uv: [
+        { u: 0.01, v: 0.01 },
+        { u: 0.129, v: 0.17 },
+      ],
     },
   },
 
